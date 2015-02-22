@@ -17,31 +17,27 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.indices.IndexAlreadyExistsException;
-import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
-
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
 /**
  * Created by frank.vogel on 17.02.2015.
  */
 public class IndexUtils {
 
     private Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
-
+    private Utils utils = new Utils();
     public void doIndexing(String filterExpression, String indexName, String indexType) throws IOException {
 
         indexName = (null != indexName | !indexName.equals(""))? indexName : Config.INDEX_NAME;
         indexType = (null != indexType | !indexType.equals(""))? indexType : Config.INDEX_TYPE;
         filterExpression = (null != filterExpression | !filterExpression.equals(""))? filterExpression : Config.FILTER_EXPRESSION;
 
-        ArrayList<File> fileList = getFilesFromDirectory(Config.SRC_DIRECTORY, filterExpression);
+        ArrayList<File> fileList = utils.readFilesFromDirectory(Config.DATA_DIR, filterExpression);
 
         for(File file : fileList) {
-            processFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);
+            processTxtFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);
         }
     }
 
@@ -53,34 +49,61 @@ public class IndexUtils {
             XContentBuilder mapping =
                     XContentFactory.jsonBuilder()
                             .startObject()
-                            .startObject("impression")
+                            .startObject("record")
                             .startObject("properties")
-                            .startObject("date")
-                            .field("type", "date")
-                            .field("format", "yyyy-MM-dd HH:mm:ss")
-                            .endObject()
-                            .startObject("affiliate_id")
-                            .field("type", "long")
-                            .endObject()
-                            .startObject("banner_id")
-                            .field("type", "long")
-                            .endObject()
-                            .startObject("group_id")
-                            .field("type", "long")
-                            .endObject()
-                            .startObject("merchant_id")
-                            .field("type", "long")
-                            .endObject()
-                            .startObject("is_membership_soft")
+                            .startObject("station_id")
                             .field("type", "integer")
                             .endObject()
-                            .startObject("platform")
-                            .field("type", "string")
+                            .startObject("date")
+                            .field("type", "date")
+                            .field("format", "yyyy-MM-dd")
+                            .endObject()
+                            .startObject("qualitaets_niveau")
+                            .field("type", "integer")
+                            .endObject()
+                            .startObject("lufttemperatur")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("dampfdruck")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("bedeckungsgrad")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("luftdruck_stationshoehe")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("rel_feuchte")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("windgeschwindigkeit")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("lufttemperatur_maximum")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("lufttemperatur_minimum")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("lufttemperatur_am_erdb_minimum")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("windspitze_maximum")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("niederschlagshoehe")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("niederschlagshoehe_ind")
+                            .field("type", "float")
+                            .endObject()
+                            .startObject("sonnenscheindauer")
+                            .field("type", "float")
                             .endObject()
                             .endObject()
                             .endObject()
                             .endObject();
-            createIndexRequestBuilder.addMapping("impression", mapping);
+            createIndexRequestBuilder.addMapping("record", mapping);
 
             CreateIndexResponse response = createIndexRequestBuilder.execute().actionGet();
         }
@@ -105,33 +128,46 @@ public class IndexUtils {
             System.out.println("deleteExistingIndex: Index "  + indexName +  " doesn't exists");
         }
     }
-
-    private static ArrayList<File> getFilesFromDirectory(String directory, String filterExpression) {
-        Boolean filtered = true;
-        File file = new File(directory);
-        ArrayList<File> fileList = new ArrayList<File>();
-        // Reading directory contents
-        System.out.println("Reading files from directory: " + Config.ANSI_RED + Config.SRC_DIRECTORY + Config.ANSI_RESET);
-        File[] files = file.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            // filter the file names and then add
-            if (null != filterExpression) {
-                if(files[i].getName().matches(filterExpression)){
-                    fileList.add(files[i]);
+    private void processTxtFile(File file, int limit, String indexName, String indexType) throws IOException{
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        BulkProcessor bp = createBulkprocessor(client);
+        String line;
+        int i = 0;
+        while ((line = br.readLine()) != null) {
+            String json = "{}";
+            if(i > 1) {
+                try {
+                    json = utils.convertLineToJson(line).toJSONString();
+                    bp.add(createIndexRequest(json, indexName, indexType));
+                    if(i % 5000 == 0) {
+                        System.out.print("processed " + i + " lines...\r");
+                    }
+                    //System.out.println(i);
+                } catch (Exception e) {
+                    // e.printStackTrace();
+                }
+                //System.out.println(json);
+                if (limit > 0) {
+                    if (i == limit) {
+                        break;
+                    }
                 }
             }
+            i++;
         }
-        System.out.println(Config.ANSI_RED + fileList.size() + Config.ANSI_RESET + " files to process.");
-        return fileList;
+        br.close();
+        bp.flush();
+        if(bp != null ) bp.close();
     }
 
-    private void processFile(File gzipFile, int maxLines, String indexName, String indexType) throws IOException {
+    private void processGzipFile(File gzipFile, int maxLines, String indexName, String indexType) throws IOException {
         long fileProcessStartTime = System.nanoTime();
         FileInputStream fileInputStream = null;
         GZIPInputStream gzipInputStream = null;
         InputStreamReader inputStreamReader = null;
         BufferedReader bufferedReader = null;
         BulkProcessor bulkProcessor = null;
+        Utils utils = new Utils();
         try {
             fileInputStream = new FileInputStream(gzipFile);
             gzipInputStream = new GZIPInputStream(fileInputStream);
@@ -143,7 +179,7 @@ public class IndexUtils {
             int i = 1;
             System.out.println("File: " + Config.ANSI_RED + gzipFile.getName() + Config.ANSI_RESET);
             while ((line = bufferedReader.readLine()) != null) {
-                jsonLine = buildJson(line.toString()).toJSONString();
+                jsonLine = utils.convertLineToJson(line.toString()).toJSONString();
                 bulkProcessor.add(createIndexRequest(jsonLine, indexName, indexType));
                 if(i % 50000 == 0) {
                     System.out.print("processed " + Config.ANSI_RED +  i + Config.ANSI_RESET + " lines...\r");
@@ -173,27 +209,7 @@ public class IndexUtils {
         System.out.println("--------------------------------------------------------------------------------------------------------");
     }
 
-    private JSONObject buildJson(String line) {
-        String jsonString = "";
-        String[] pieces = line.replace("\"", "").split(",");
-        JSONObject json = new JSONObject();
-        // "date","merchant_id","affiliate_id","banner_id","group_id","is_membership_soft","platform"
-        json.put("date", pieces[0]);
-        long merchantId = parseLong(pieces[1]);
-        json.put("merchant_id", merchantId);
-        long affiliateId = parseLong(pieces[2]);
-        json.put("affiliate_id", affiliateId);
-        long bannerId = parseLong(pieces[3]);
-        json.put("banner_id", bannerId);
-        long groupId = parseLong(pieces[4]);
-        json.put("group_id", groupId);
-        int isMembershipSoft = parseInt(pieces[5]);
-        json.put("is_membership_soft", isMembershipSoft);
-        String platform = pieces[6];
-        json.put("platform", platform);
 
-        return json;
-    }
 
     private IndexRequest createIndexRequest(String source, String indexName, String indexType) {
         IndexRequest indexRequest = new IndexRequest();
