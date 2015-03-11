@@ -10,6 +10,8 @@ import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
@@ -18,27 +20,43 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.indices.IndexAlreadyExistsException;
 
+import javax.security.auth.login.Configuration;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 /**
  * Created by frank.vogel on 17.02.2015.
  */
 public class IndexUtils {
+    private Client client;
+    private Utils utils;
+    private final static Logger LOGGER = Logger.getLogger(IndexUtils.class.getName());;
 
-    private Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
-    private Utils utils = new Utils();
+    public IndexUtils() {
+        Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name", Config.CLUSTER_NAME).put("client.transport.sniff", true).build();
+        client = new TransportClient(settings).addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
+        utils = new Utils();
+    }
+
+
     public void doIndexing(String filterExpression, String indexName, String indexType) throws IOException {
 
-        indexName = (null != indexName | !indexName.equals(""))? indexName : Config.INDEX_NAME;
-        indexType = (null != indexType | !indexType.equals(""))? indexType : Config.INDEX_TYPE;
         filterExpression = (null != filterExpression | !filterExpression.equals(""))? filterExpression : Config.FILTER_EXPRESSION;
 
         ArrayList<File> fileList = utils.readFilesFromDirectory(Config.DATA_DIR, filterExpression);
 
         for(File file : fileList) {
-            processTxtFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);
+            processGzipFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);
         }
+/*
+        try {
+            Thread.sleep(666L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+*/
+        closeClient();
     }
 
     public void createNewIndex(String indexName){
@@ -46,64 +64,8 @@ public class IndexUtils {
         try {
             CreateIndexRequestBuilder createIndexRequestBuilder = client.admin().indices().prepareCreate(indexName);
             // mapping
-            XContentBuilder mapping =
-                    XContentFactory.jsonBuilder()
-                            .startObject()
-                            .startObject("record")
-                            .startObject("properties")
-                            .startObject("station_id")
-                            .field("type", "integer")
-                            .endObject()
-                            .startObject("date")
-                            .field("type", "date")
-                            .field("format", "yyyy-MM-dd")
-                            .endObject()
-                            .startObject("qualitaets_niveau")
-                            .field("type", "integer")
-                            .endObject()
-                            .startObject("lufttemperatur")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("dampfdruck")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("bedeckungsgrad")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("luftdruck_stationshoehe")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("rel_feuchte")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("windgeschwindigkeit")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("lufttemperatur_maximum")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("lufttemperatur_minimum")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("lufttemperatur_am_erdb_minimum")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("windspitze_maximum")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("niederschlagshoehe")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("niederschlagshoehe_ind")
-                            .field("type", "float")
-                            .endObject()
-                            .startObject("sonnenscheindauer")
-                            .field("type", "float")
-                            .endObject()
-                            .endObject()
-                            .endObject()
-                            .endObject();
-            createIndexRequestBuilder.addMapping("record", mapping);
+            XContentBuilder mapping = createMapping();
+            createIndexRequestBuilder.addMapping("r", mapping);
 
             CreateIndexResponse response = createIndexRequestBuilder.execute().actionGet();
         }
@@ -113,6 +75,66 @@ public class IndexUtils {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private XContentBuilder createMapping() {
+        XContentBuilder mapping =
+                null;
+        try {
+            mapping = XContentFactory.jsonBuilder()
+                    .startObject()
+                    .startObject("r")
+                    .startObject("_all")
+                    .field("enabled", "false")
+                    .endObject()
+                    .startObject("_source")
+                    .field("enabled", "false")
+                    .endObject()
+                    .startObject("properties")
+                    .startObject("date")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .startObject("affiliate_id")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .startObject("banner_id")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .startObject("group_id")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .startObject("merchant_id")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .startObject("count")
+                    .field("type", "integer")
+                    .field("index", "not_analyzed")
+                    .field("store", false)
+                    .field("doc_values", true)
+                    .endObject()
+                    .endObject()
+                    .endObject()
+                    .endObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //mapping.humanReadable(true);
+        return mapping;
     }
 
     public void deleteExistingIndex(String indexName) {
@@ -127,37 +149,6 @@ public class IndexUtils {
         } catch (Exception e) {
             System.out.println("deleteExistingIndex: Index "  + indexName +  " doesn't exists");
         }
-    }
-    private void processTxtFile(File file, int limit, String indexName, String indexType) throws IOException{
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        BulkProcessor bp = createBulkprocessor(client);
-        String line;
-        int i = 0;
-        while ((line = br.readLine()) != null) {
-            String json = "{}";
-            if(i > 1) {
-                try {
-                    json = utils.convertLineToJson(line).toJSONString();
-                    bp.add(createIndexRequest(json, indexName, indexType));
-                    if(i % 5000 == 0) {
-                        System.out.print("processed " + i + " lines...\r");
-                    }
-                    //System.out.println(i);
-                } catch (Exception e) {
-                    // e.printStackTrace();
-                }
-                //System.out.println(json);
-                if (limit > 0) {
-                    if (i == limit) {
-                        break;
-                    }
-                }
-            }
-            i++;
-        }
-        br.close();
-        bp.flush();
-        if(bp != null ) bp.close();
     }
 
     private void processGzipFile(File gzipFile, int maxLines, String indexName, String indexType) throws IOException {
@@ -209,8 +200,6 @@ public class IndexUtils {
         System.out.println("--------------------------------------------------------------------------------------------------------");
     }
 
-
-
     private IndexRequest createIndexRequest(String source, String indexName, String indexType) {
         IndexRequest indexRequest = new IndexRequest();
         indexRequest.index(indexName);
@@ -248,8 +237,10 @@ public class IndexUtils {
                 .build();
         return bulkProcessor;
     }
-    public void closeClient() {
-        client.close();
-    }
 
+    private void closeClient() {
+        if(client != null) {
+            client.close();
+        }
+    }
 }

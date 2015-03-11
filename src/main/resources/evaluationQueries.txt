@@ -1,7 +1,0 @@
-TODO
-[17.02.2015 14:54] Rowanto Rowanto:
-filter by publisher id 143535, 106933, and 130372[17.02.2015 14:54] Rowanto Rowanto:
-zeitraum alle deine zeitraum[17.02.2015 14:54] Rowanto Rowanto:
-gruppiert by advertiser[17.02.2015 14:54] Rowanto Rowanto:
-wenn du umgekehrt machen willst[17.02.2015 14:55] Rowanto Rowanto:
-advertiser ids sind 2891, 3593, 4345

@@ -7,15 +7,15 @@ public class Config {
     // server settings
     public static final int SERVER_PORT = 9300;
     public static final String SERVER_ADDRESS = "localhost";
-
+    public static final String CLUSTER_NAME = "elasticsearch";
 
     // indexing settings
     public static final String INDEX_NAME = "climatedata";
-    public static final String INDEX_TYPE = "record"; // each doc is a record
+    public static final String INDEX_TYPE = "r"; // each doc is a record
     public static final int BULK_ACTION_COUNT = 2222;
 
     public static final String FILTER_EXPRESSION = "^produkt_klima_Tageswerte_.*.txt";
-    public static final String DATA_DIR = "/home/dude/Downloads/Data/unzipped";
+    public static final String DATA_DIR = "/home/elshotodore/Downloads/Data/";
     public static final int MAX_LINES_TO_PROCESS = 0; // set > 0 to break after XX processed lines
 
     public static final String ANSI_RESET = "\u001B[0m";
