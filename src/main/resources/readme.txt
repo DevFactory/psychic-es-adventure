@@ -3,11 +3,11 @@ install mysql
 sudo apt-get install mysql-server-5.6
 
 create user sqluser identified by 'sqluserpw';
-create database weatherstations;
-use weatherstations;
+create database climatedata;
+use climatedata;
 
-grant usage on *.* to sqluser@locahost identified by 'sqluserpw';
-grant all privileges on weatherstations.* to sqluser@localhost;
+grant usage on *.* to sqluser@localhost identified by 'sqluserpw';
+grant all privileges on climatedata.* to sqluser@localhost;
 
 CREATE TABLE weatherstations (id INT NOT NULL AUTO_INCREMENT,
     wban VARCHAR(5) NOT NULL,

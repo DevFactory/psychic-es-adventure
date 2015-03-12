@@ -1,170 +1,167 @@
-
-********  WORLD WAR II ERA SUMMARY OF DAY DATASET  ******** 
-
-*** WBAN NUMBER IS SHOWN FOLLOWED BY LOCATION, LAT/LON, AND ELEVATION   
-*** IN METERS (9999 INDICATES EXACT ELEV UNKNOWN).
-*** SEE 'COUNTRY-ID.TXT' FILE FOR COUNTRY NAMES VS ID REFERENCE.
-
-WBAN  NAME  +  STATE/COUNTRY ID              LAT   LON    ELEV  
-
-33013 AIN EL                             AL  3623N 00637E  611  
-33031 LA SENIA                           AL  3537N 00037E   88  
-33023 MAISON BLANCHE                     AL  3643N 00314E   23  
-33044 TELERGMA                           AL  3607N 00621E  754  
-12001 TINDOUF                            AL  2741N 00809W  443  
-11604 ST JOHNS/COOLIDGE FIELD            AT  1707N 06147W   10  
-82502 AMBERLY                            AU  2736S 15243E   27  
-82501 ARCHER                             AU  2735S 15301E   19  
-82506 BRISBANE                           AU  2726S 15305E    2  
-82402 CHARLEVILLE                        AU  2625S 14616E  300  
-82403 CLONCURRY                          AU  2041S 14030E  188  
-81404 HORN ISLAND                        AU  1036S 14218E   12  
-82404 LONGREACH                          AU  2327S 14408E  187  
-82405 MACKAY                             AU  2110S 14910E    8  
-82503 ROCKHAMPTON                        AU  2324S 15030E   13  
-13201 LAJES                              AZ  3846N 02706W   55  
-12706 GREAT EXUMA ISLAND                 BA  2331N 07547W   19  
-13601 BERMUDA                            BE  3222N 06441W    6  
-32503 BAHREIN ISLAND                     BN  2616N 05038E    1  
-11501 CHRISTS CHURCH                     BR  1304N 05930W   55  
-10505 CLEVELANDIA                        BZ  0352N 05149W   29  
-50301 FERNANDO DE NORONHA                BZ  0350S 03225W   38  
-50302 FORTALEZA                          BZ  0346S 03833W   23  
-50304 PARNAMIRIM                         BZ  0554S 03515W   50  
-50303 RECIFE                             BZ  0807S 03455W    9  
-50403 SAO LUIZ                           BZ  0235S 04414W   47  
-50401 VAL DE CANS                        BZ  0123S 04829W   13  
-10807 PARRITA                            CS  0931N 08420W    6  
-10806 SAN JOSE                           CS  0954N 08408W 1132  
-60701 CANTON ISLAND                      CT  0246S 17143W    3  
-12701 CAMAGUEY                           CU  2124N 07755W  123  
-12801 SAN ANTONIO                        CU  2253N 08230W   48  
-11615 CIUDAD TRUJILLO                    DR  1829N 06954W 9999  
-31401 SHEIKH OTHMAN                      DY  1252N 04458E   10  
-32301 LUXOR                              EG  2542N 03242E   86  
-33205 MERSA MATRUH                       EG  3127N 02712E   26  
-33303 PAYNE                              EG  3008N 03124E   71  
-50801 SALINAS                            EQ  0212S 08100W    8  
-32504 SHARJAH                            ER  2521N 05524E    2  
-31302 ERITREA                            ET  1517N 03855E 2326  
-81702 NANDI/AAF                          FJ  1745S 17725E   10  
-34017 BASTIA/CORSICA                     FR  4233N 00929E   16  
-34002 BASTIA/CORSICA                     FR  4242N 00927E  105  
-34003 C DELORO/CORSICA                   FR  4155N 00848E    3  
-34012 MARSEILLE                          FR  4326N 00513E   12  
-34013 MIGLIACCIARO/CORSICA               FR  4200N 00924E   18  
-34022 PARIS/ORLY                         FR  4844N 00222E  100  
-34005 PORTETTA/CORSICA                   FR  4234N 00927E   49  
-10001 ACCRA                              GH  0536N 00010W   62  
-16405 NARSARSSUAK                        GL  6111N 04525W   11  
-16407 SIMIUTAK                           GL  6041N 04632W   62  
-16504 SONDRESTROM                        GL  6701N 05048W   50  
-33206 ATHENS                             GR  3758N 02343E  110  
-11901 GUATEMALA CITY                     GU  1435N 09032W 1486  
-11902 SAN JOSE                           GU  1355N 09050W    5  
-10502 GEORGETOWN                         GY  0630N 05815W   29  
-11701 PORT AU PRINCE                     HA  1833N 07221W   16  
-22509 BURNS FIELD/AAF                    HI  2154N 15935W    9  
-22504 HICKAM/AFB                         HI  2120N 15757W    3  
-21501 LYMAN FIELD/AAF                    HI  1943N 15504W   11  
-22507 MOKULEIA FIELD/AAF                 HI  2135N 15812W    5  
-22502 MOLOKAI/AP 524                     HI  2109N 15706W   42  
-22508 WHEELER/AFB 810.1                  HI  2129N 15802W  271  
-16101 CAMP DELTA                         IL  6540N 01805W    3  
-16201 KEFLAVIK                           IL  6358N 02236W   50  
-16202 REYKJAVIK                          IL  6408N 02157W    8  
-32701 AGRA                               IN  2710N 07802E  167  
-32801 BAMRAULI                           IN  2526N 08150E   98  
-31701 BANGALORE                          IN  1257N 07738E  897  
-32815 BARRACKPORE                        IN  2246N 08822E    7  
-32907 BINDUKURI                          IN  2643N 09248E   75  
-32803 CHAKULIA                           IN  2227N 08642E  131  
-32805 GAYA                               IN  2445N 08457E  115  
-32702 JODHPUR                            IN  2616N 07303E  228  
-32904 JORHAT                             IN  2643N 09410E   93  
-32812 KALAIKUNDA                         IN  2220N 08713E   61  
-32906 MOHANBERI                          IN  2729N 09501E  111  
-33405 HABBANIYA                          IQ  3322N 04334E   45  
-33305 RUTBA                              IQ  3256N 03944E  783  
-33401 ABADAN                             IR  3022N 04814E    3  
-33501 AMIRABAD POST                      IR  3543N 05123E 1340  
-33406 CAMP PARKS                         IR  3451N 04832E 1727  
-34123 AMENDOLA                           IY  4133N 01543E   49  
-34101 AMENDOLA/MU 9                      IY  4143N 01522E   38  
-34109 BARI                               IY  4108N 01647E   28  
-33019 CAGLIARI/SARDINIA                  IY  3915N 00905E    9  
-34150 CIAMPINO                           IY  4148N 01236E  129  
-33014 DECIMOMANNO                        IY  3918N 00910E    7  
-34139 FLORENCE/MU 1+4+10                 IY  4346N 01115E   67  
-34104 FOGGIA                             IY  4126N 01532E   74  
-34105 FOGGIA/MU 18                       IY  4127N 01533E   83  
-33111 FONTANA                            IY  3727N 01503E    3  
-34111 LECCE/MU 2                         IY  4014N 01808E   17  
-34113 NAPLES                             IY  4054N 01418E   93  
-33117 PALERMO/MU 10                      IY  3807N 01320E  114  
-34147 PISA                               IY  4341N 01024E    3  
-11704 KINGSTON                           JM  1754N 07717W    5  
-44401 CHITOSE HOKKAIDO                   JP  4248N 14139E   27  
-42204 KADENA/AB                          JP  2621N 12746E   43  
-43305 KANOYA                             JP  3122N 13055E   77  
-42206 OKINAWA/RYUKYU ISLANDS             JP  2612N 12739E    4  
-43302 OSAKA                              JP  3448N 13526E   16  
-43307 TACHIKAWA                          JP  3542N 13924E  101  
-43201 SEOUL/ROK K-14                     KO  3733N 12648E   20  
-61501 AMURI/FIELD AAF                    KU  1850S 15949W    5  
-11601 ST LUCIA/ISLAND                    LC  1344N 06057W    8  
-10002 CAPE PALMAS                        LI  0422N 00741W 9999  
-10101 FISHERMANS LAKE                    LI  0645N 01115W 9999  
-10102 MARSHALL/ROBERTS FIELD             LI  0614N 01022W 9999  
-33123 WHEELUS                            LY  3254N 01317E   13  
-13002 CASABLANCA/CAZES FIELD             MC  3335N 00739W   49  
-13005 MARRAKECH                          MC  3139N 00801W  461  
-13007 OUJDA                              MC  3445N 00155W  460  
-13013 TOUAHAR                            MC  3412N 00411W  564  
-12101 ATAR                               MT  2028N 01302W  235  
-80509 BOUGAINVILLE/AAF                   NG  0614S 15507E   40  
-80412 FINSCHHAFEN/AAF                    NG  0637S 14751E   15  
-80425 JACKSON                            NG  0927S 14713E   37  
-80411 LAE/AAF                            NG  0645S 14659E    5  
-81601 ESPIRITU SANTO/AAF                 NH  1530S 16715E    9  
-30001 APAPA                              NI  0627N 00324E    3  
-31001 KANO                               NI  1203N 00832E  475  
-31101 MAIDUGURI                          NI  1151N 01305E  354  
-11801 MERCEDES                           NK  1208N 08612W   63  
-11606 WILLEMSTAD                         NU  1211N 06857W    9  
-20501 CHRISTMAS ISLAND/AAF               NZ  0159N 15721W    2  
-32501 MASIRAH ISLAND                     OM  2039N 05854E   16  
-31501 SALALAH                            OM  1703N 05406E   17  
-61502 BORA BORA/AAF                      PF  1627S 15146W    3  
-41207 CLARK                              PH  1511N 12033E  146  
-41204 MANILA/AAF                         PH  1430N 12100E    5  
-42401 IWO JIMA/AB                        PI  2447N 14119E  114  
-40601 KWAJALEIN/AFB                      PI  0843N 16744E    3  
-20602 PALMYRA ISLAND/LINE ISLANDS        PI  0553N 16205W    2  
-32603 BHOLARI                            PK  2519N 06812E   53  
-32602 JIWANI                             PK  2504N 06148E   56  
-32601 KARACHI                            PK  2454N 06711E   21  
-10701 BALBOA/ALBROOK                     PM  0858N 07933W    9  
-10804 DAVID                              PM  0823N 08226W   23  
-10718 FORT KOBBE                         PM  0855N 07936W   16  
-10705 HOWARD                             PM  0855N 07936W   10  
-10704 JAQUE                              PM  0730N 07810W    5  
-10802 POCRI                              PM  0744N 08008W   14  
-10703 REY ISLAND                         PM  0814N 07854W   24  
-10803 RIO HATO                           PM  0822N 08008W   22  
-15605 KUUJJAUQ/AIRPORT                   PQ  5806N 06825W  816  
-15604 MINGAN                             PQ  5017N 06410W   23  
-50802 TALARA                             PR  0432S 08114W   88  
-11101 DAKAR/EKNES FIELD                  SG  1443N 01714W   22  
-11103 DAKAR/MALLARD FIELD                SG  1445N 01730W   21  
-80510 BANIKA/AAF                         SO  0904S 15914E   18  
-80504 MUNDA/AAF                          SO  0820S 15716E    8  
-34018 ISTRES                             SP  4330N 00457E   24  
-11610 WALLER/BWI                         TD  1037N 06113W   41  
-12702 SOUTH CAICOS ISLAND                TI  2129N 07131W    4  
-62701 TONGATABU ISLAND                   TO  2115S 17508W   30  
-33109 EL AQUINA                          TS  3651N 01015E    4  
-33121 EL DJEM                            TS  3520N 01040E 9999  
-33003 SISI AHMED                         TS  3712N 00950E    4  
-33307 ADANA                              TU  3659N 03518E   20  
-15027 WARRINGTON                         UK  5323N 00239W   27  
+#WORLD WAR II ERA SUMMARY OF DAY DATASET  ******** 
+#WBAN NUMBER IS SHOWN FOLLOWED BY LOCATION, LAT/LON, AND ELEVATION   
+#IN METERS (9999 INDICATES EXACT ELEV UNKNOWN).
+#SEE 'COUNTRY-ID.TXT' FILE FOR COUNTRY NAMES VS ID REFERENCE.
+#WBAN;  NAME;STATE/COUNTRY ID;LATITUDE;LONGITUDE;ELEVATION
+33013;AIN EL                            ; AL ; 3623N ;00637E ; 611  
+33031;LA SENIA                          ; AL ; 3537N ;00037E ;  88  
+33023;MAISON BLANCHE                    ; AL ; 3643N ;00314E ;  23  
+33044;TELERGMA                          ; AL ; 3607N ;00621E ; 754  
+12001;TINDOUF                           ; AL ; 2741N ;00809W ; 443  
+11604;ST JOHNS/COOLIDGE FIELD           ; AT ; 1707N ;06147W ;  10  
+82502;AMBERLY                           ; AU ; 2736S ;15243E ;  27  
+82501;ARCHER                            ; AU ; 2735S ;15301E ;  19  
+82506;BRISBANE                          ; AU ; 2726S ;15305E ;   2  
+82402;CHARLEVILLE                       ; AU ; 2625S ;14616E ; 300  
+82403;CLONCURRY                         ; AU ; 2041S ;14030E ; 188  
+81404;HORN ISLAND                       ; AU ; 1036S ;14218E ;  12  
+82404;LONGREACH                         ; AU ; 2327S ;14408E ; 187  
+82405;MACKAY                            ; AU ; 2110S ;14910E ;   8  
+82503;ROCKHAMPTON                       ; AU ; 2324S ;15030E ;  13  
+13201;LAJES                             ; AZ ; 3846N ;02706W ;  55  
+12706;GREAT EXUMA ISLAND                ; BA ; 2331N ;07547W ;  19  
+13601;BERMUDA                           ; BE ; 3222N ;06441W ;   6  
+32503;BAHREIN ISLAND                    ; BN ; 2616N ;05038E ;   1  
+11501;CHRISTS CHURCH                    ; BR ; 1304N ;05930W ;  55  
+10505;CLEVELANDIA                       ; BZ ; 0352N ;05149W ;  29  
+50301;FERNANDO DE NORONHA               ; BZ ; 0350S ;03225W ;  38  
+50302;FORTALEZA                         ; BZ ; 0346S ;03833W ;  23  
+50304;PARNAMIRIM                        ; BZ ; 0554S ;03515W ;  50  
+50303;RECIFE                            ; BZ ; 0807S ;03455W ;   9  
+50403;SAO LUIZ                          ; BZ ; 0235S ;04414W ;  47  
+50401;VAL DE CANS                       ; BZ ; 0123S ;04829W ;  13  
+10807;PARRITA                           ; CS ; 0931N ;08420W ;   6  
+10806;SAN JOSE                          ; CS ; 0954N ;08408W ;1132  
+60701;CANTON ISLAND                     ; CT ; 0246S ;17143W ;   3  
+12701;CAMAGUEY                          ; CU ; 2124N ;07755W ; 123  
+12801;SAN ANTONIO                       ; CU ; 2253N ;08230W ;  48  
+11615;CIUDAD TRUJILLO                   ; DR ; 1829N ;06954W ;9999  
+31401;SHEIKH OTHMAN                     ; DY ; 1252N ;04458E ;  10  
+32301;LUXOR                             ; EG ; 2542N ;03242E ;  86  
+33205;MERSA MATRUH                      ; EG ; 3127N ;02712E ;  26  
+33303;PAYNE                             ; EG ; 3008N ;03124E ;  71  
+50801;SALINAS                           ; EQ ; 0212S ;08100W ;   8  
+32504;SHARJAH                           ; ER ; 2521N ;05524E ;   2  
+31302;ERITREA                           ; ET ; 1517N ;03855E ;2326  
+81702;NANDI/AAF                         ; FJ ; 1745S ;17725E ;  10  
+34017;BASTIA/CORSICA                    ; FR ; 4233N ;00929E ;  16  
+34002;BASTIA/CORSICA                    ; FR ; 4242N ;00927E ; 105  
+34003;C DELORO/CORSICA                  ; FR ; 4155N ;00848E ;   3  
+34012;MARSEILLE                         ; FR ; 4326N ;00513E ;  12  
+34013;MIGLIACCIARO/CORSICA              ; FR ; 4200N ;00924E ;  18  
+34022;PARIS/ORLY                        ; FR ; 4844N ;00222E ; 100  
+34005;PORTETTA/CORSICA                  ; FR ; 4234N ;00927E ;  49  
+10001;ACCRA                             ; GH ; 0536N ;00010W ;  62  
+16405;NARSARSSUAK                       ; GL ; 6111N ;04525W ;  11  
+16407;SIMIUTAK                          ; GL ; 6041N ;04632W ;  62  
+16504;SONDRESTROM                       ; GL ; 6701N ;05048W ;  50  
+33206;ATHENS                            ; GR ; 3758N ;02343E ; 110  
+11901;GUATEMALA CITY                    ; GU ; 1435N ;09032W ;1486  
+11902;SAN JOSE                          ; GU ; 1355N ;09050W ;   5  
+10502;GEORGETOWN                        ; GY ; 0630N ;05815W ;  29  
+11701;PORT AU PRINCE                    ; HA ; 1833N ;07221W ;  16  
+22509;BURNS FIELD/AAF                   ; HI ; 2154N ;15935W ;   9  
+22504;HICKAM/AFB                        ; HI ; 2120N ;15757W ;   3  
+21501;LYMAN FIELD/AAF                   ; HI ; 1943N ;15504W ;  11  
+22507;MOKULEIA FIELD/AAF                ; HI ; 2135N ;15812W ;   5  
+22502;MOLOKAI/AP 524                    ; HI ; 2109N ;15706W ;  42  
+22508;WHEELER/AFB 810.1                 ; HI ; 2129N ;15802W ; 271  
+16101;CAMP DELTA                        ; IL ; 6540N ;01805W ;   3  
+16201;KEFLAVIK                          ; IL ; 6358N ;02236W ;  50  
+16202;REYKJAVIK                         ; IL ; 6408N ;02157W ;   8  
+32701;AGRA                              ; IN ; 2710N ;07802E ; 167  
+32801;BAMRAULI                          ; IN ; 2526N ;08150E ;  98  
+31701;BANGALORE                         ; IN ; 1257N ;07738E ; 897  
+32815;BARRACKPORE                       ; IN ; 2246N ;08822E ;   7  
+32907;BINDUKURI                         ; IN ; 2643N ;09248E ;  75  
+32803;CHAKULIA                          ; IN ; 2227N ;08642E ; 131  
+32805;GAYA                              ; IN ; 2445N ;08457E ; 115  
+32702;JODHPUR                           ; IN ; 2616N ;07303E ; 228  
+32904;JORHAT                            ; IN ; 2643N ;09410E ;  93  
+32812;KALAIKUNDA                        ; IN ; 2220N ;08713E ;  61  
+32906;MOHANBERI                         ; IN ; 2729N ;09501E ; 111  
+33405;HABBANIYA                         ; IQ ; 3322N ;04334E ;  45  
+33305;RUTBA                             ; IQ ; 3256N ;03944E ; 783  
+33401;ABADAN                            ; IR ; 3022N ;04814E ;   3  
+33501;AMIRABAD POST                     ; IR ; 3543N ;05123E ;1340  
+33406;CAMP PARKS                        ; IR ; 3451N ;04832E ;1727  
+34123;AMENDOLA                          ; IY ; 4133N ;01543E ;  49  
+34101;AMENDOLA/MU 9                     ; IY ; 4143N ;01522E ;  38  
+34109;BARI                              ; IY ; 4108N ;01647E ;  28  
+33019;CAGLIARI/SARDINIA                 ; IY ; 3915N ;00905E ;   9  
+34150;CIAMPINO                          ; IY ; 4148N ;01236E ; 129  
+33014;DECIMOMANNO                       ; IY ; 3918N ;00910E ;   7  
+34139;FLORENCE/MU 1+4+10                ; IY ; 4346N ;01115E ;  67  
+34104;FOGGIA                            ; IY ; 4126N ;01532E ;  74  
+34105;FOGGIA/MU 18                      ; IY ; 4127N ;01533E ;  83  
+33111;FONTANA                           ; IY ; 3727N ;01503E ;   3  
+34111;LECCE/MU 2                        ; IY ; 4014N ;01808E ;  17  
+34113;NAPLES                            ; IY ; 4054N ;01418E ;  93  
+33117;PALERMO/MU 10                     ; IY ; 3807N ;01320E ; 114  
+34147;PISA                              ; IY ; 4341N ;01024E ;   3  
+11704;KINGSTON                          ; JM ; 1754N ;07717W ;   5  
+44401;CHITOSE HOKKAIDO                  ; JP ; 4248N ;14139E ;  27  
+42204;KADENA/AB                         ; JP ; 2621N ;12746E ;  43  
+43305;KANOYA                            ; JP ; 3122N ;13055E ;  77  
+42206;OKINAWA/RYUKYU ISLANDS            ; JP ; 2612N ;12739E ;   4  
+43302;OSAKA                             ; JP ; 3448N ;13526E ;  16  
+43307;TACHIKAWA                         ; JP ; 3542N ;13924E ; 101  
+43201;SEOUL/ROK K-14                    ; KO ; 3733N ;12648E ;  20  
+61501;AMURI/FIELD AAF                   ; KU ; 1850S ;15949W ;   5  
+11601;ST LUCIA/ISLAND                   ; LC ; 1344N ;06057W ;   8  
+10002;CAPE PALMAS                       ; LI ; 0422N ;00741W ;9999  
+10101;FISHERMANS LAKE                   ; LI ; 0645N ;01115W ;9999  
+10102;MARSHALL/ROBERTS FIELD            ; LI ; 0614N ;01022W ;9999  
+33123;WHEELUS                           ; LY ; 3254N ;01317E ;  13  
+13002;CASABLANCA/CAZES FIELD            ; MC ; 3335N ;00739W ;  49  
+13005;MARRAKECH                         ; MC ; 3139N ;00801W ; 461  
+13007;OUJDA                             ; MC ; 3445N ;00155W ; 460  
+13013;TOUAHAR                           ; MC ; 3412N ;00411W ; 564  
+12101;ATAR                              ; MT ; 2028N ;01302W ; 235  
+80509;BOUGAINVILLE/AAF                  ; NG ; 0614S ;15507E ;  40  
+80412;FINSCHHAFEN/AAF                   ; NG ; 0637S ;14751E ;  15  
+80425;JACKSON                           ; NG ; 0927S ;14713E ;  37  
+80411;LAE/AAF                           ; NG ; 0645S ;14659E ;   5  
+81601;ESPIRITU SANTO/AAF                ; NH ; 1530S ;16715E ;   9  
+30001;APAPA                             ; NI ; 0627N ;00324E ;   3  
+31001;KANO                              ; NI ; 1203N ;00832E ; 475  
+31101; MAIDUGURI                        ; NI;  1151N; 01305E;  354  
+11801; MERCEDES                         ; NK;  1208N; 08612W;   63  
+11606; WILLEMSTAD                       ; NU;  1211N; 06857W;    9  
+20501; CHRISTMAS ISLAND/AAF             ; NZ;  0159N; 15721W;    2  
+32501; MASIRAH ISLAND                   ; OM;  2039N; 05854E;   16  
+31501; SALALAH                          ; OM;  1703N; 05406E;   17  
+61502; BORA BORA/AAF                    ; PF;  1627S; 15146W;    3  
+41207; CLARK                            ; PH;  1511N; 12033E;  146  
+41204; MANILA/AAF                       ; PH;  1430N; 12100E;    5  
+42401; IWO JIMA/AB                      ; PI;  2447N; 14119E;  114  
+40601; KWAJALEIN/AFB                    ; PI;  0843N; 16744E;    3  
+20602; PALMYRA ISLAND/LINE ISLANDS      ; PI;  0553N; 16205W;    2  
+32603; BHOLARI                          ; PK;  2519N; 06812E;   53  
+32602; JIWANI                           ; PK;  2504N; 06148E;   56  
+32601; KARACHI                          ; PK;  2454N; 06711E;   21  
+10701; BALBOA/ALBROOK                   ; PM;  0858N; 07933W;    9  
+10804; DAVID                            ; PM;  0823N; 08226W;   23  
+10718; FORT KOBBE                       ; PM;  0855N; 07936W;   16  
+10705; HOWARD                           ; PM;  0855N; 07936W;   10  
+10704; JAQUE                            ; PM;  0730N; 07810W;    5  
+10802; POCRI                            ; PM;  0744N; 08008W;   14  
+10703; REY ISLAND                       ; PM;  0814N; 07854W;   24  
+10803; RIO HATO                         ; PM;  0822N; 08008W;   22  
+15605; KUUJJAUQ/AIRPORT                 ; PQ;  5806N; 06825W;  816  
+15604; MINGAN                           ; PQ;  5017N; 06410W;   23  
+50802; TALARA                           ; PR;  0432S; 08114W;   88  
+11101; DAKAR/EKNES FIELD                ; SG;  1443N; 01714W;   22  
+11103; DAKAR/MALLARD FIELD              ; SG;  1445N; 01730W;   21  
+80510; BANIKA/AAF                       ; SO;  0904S; 15914E;   18  
+80504; MUNDA/AAF                        ; SO;  0820S; 15716E;    8  
+34018; ISTRES                           ; SP;  4330N; 00457E;   24  
+11610; WALLER/BWI                       ; TD;  1037N; 06113W;   41  
+12702; SOUTH CAICOS ISLAND              ; TI;  2129N; 07131W;    4  
+62701; TONGATABU ISLAND                 ; TO;  2115S; 17508W;   30  
+33109; EL AQUINA                        ; TS;  3651N; 01015E;    4  
+33121; EL DJEM                          ; TS;  3520N; 01040E; 9999  
+33003; SISI AHMED                       ; TS;  3712N; 00950E;    4  
+33307; ADANA                            ; TU;  3659N; 03518E;   20  
+15027; WARRINGTON                       ; UK;  5323N; 00239W;   27  
+     

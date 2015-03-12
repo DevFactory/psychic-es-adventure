@@ -13,59 +13,23 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
 /**
- * Created by frank.vogel on 20.02.2015.
+ * Created by el shotodore on 20.02.2015.
  */
 public class Utils {
-    public static void timer(long then) {
-        long now = System.nanoTime();
 
-        System.out.println("\n--------------------------------------------------------------------------------");
-        System.out.println("Runtime about " + (now - then) / 1000000 + "ms." );
-        System.out.println("--------------------------------------------------------------------------------");
-    }
-
-
-    public static ArrayList<File> readFilesFromDirectory(String directory, String filterExpression) {
-        Boolean filtered = true;
-        File file = new File(directory);
-        ArrayList<File> fileList = new ArrayList<File>();
-        // TODO - catch files == null
-        File[] files = file.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            // filter the file names and then add
-            if (null != filterExpression) {
-                if (files[i].getName().matches(filterExpression)) {
-                    fileList.add(files[i]);
-                }
-            }
-        }
-        System.out.println(Config.ANSI_RED + fileList.size() + Config.ANSI_RESET + " files to process.");
-        return fileList;
-    }
-
-    public void processFile(File file, int limit, String indexName, String indexType) throws IOException {
+    public ArrayList<String> fileToList(String file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
+        ArrayList<String> fileContent = new ArrayList<String>();
         String line;
         int i = 0;
         while ((line = br.readLine()) != null) {
-            String json = "{}";
-            if(i > 1) {
-                try {
-                    json = convertLineToJson(line).toJSONString();
-                    //System.out.println(i);
-                } catch (Exception e) {
-                    // e.printStackTrace();
-                }
-                //System.out.println(json);
-                if (limit > 0) {
-                    if (i == limit) {
-                        break;
-                    }
-                }
+            if(i > 1 && !line.startsWith("#")) {
+                fileContent.add(line);
             }
             i++;
         }
         br.close();
+        return fileContent;
     }
 
     public JSONObject convertLineToJson(String line) {

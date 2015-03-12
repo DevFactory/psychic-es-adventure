@@ -1,7 +1,7 @@
 package de.exit13;
 
 /**
- * Created by frank.vogel on 18.02.2015.
+ * Created by el shotodore on 18.02.2015.
  */
 public class Config {
     // server settings

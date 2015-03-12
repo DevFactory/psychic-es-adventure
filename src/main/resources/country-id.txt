@@ -1,179 +1,213 @@
-
-Country ID (2-character)       Country  
-
-AB                             Albania  
-AG                             Argentina
-AH                             Afghanistan  
-AI, BT, FR, HE, MA, RE, TP     Ocean Islands
-AL                             Algeria  
-AN                             Angola   
-AT                             Antigua, St. Kitts, Nevis, Barbuda, and other Islands
-AU                             Australia and Additional Islands 
-BA, TI                         Bahamas, Turks and Caicos Islands
-BE                             Bermuda  
-BF                             Brunei   
-BH                             Belize   
-BI                             Burundi  
-BJ                             Benin
-BM                             Burma
-BN                             Bahrain  
-BO                             Bolivia  
-BR, GD                         Barbados, Grenada
-BU                             Bulgaria 
-BW                             Bangladesh   
-BX                             Belgium and Luxembourg   
-BY                             Byelorussia  
-BZ                             Brazil   
-CA                             Clipperton   
-CD                             Chad 
-CE                             Central African Republic 
-CG                             Congo
-CH                             Chile
-CI                             Peoples Republic of China
-CM                             Cameroon 
-CN                             Canada   
-CO                             Colombia 
-CS                             Costa Rica   
-CT                             Canton Island
-CU                             Cuba 
-CY                             Cyprus   
-CZ                             Czechoslovakia   
-DD, DL                         Germany (former East Germany, West Germany)  
-DJ                             Djibouti 
-DN, FA                         Denmark, Faeroe Islands  
-DO                             Dominica 
-DR                             Dominican Republic   
-DY                             Democratic Yemen 
-EG                             Egypt
-EQ                             Ecuador  
-ER                             United Arab Emirates 
-ES                             El Salvador  
-ET                             Ethiopia 
-FG                             French Guiana
-FI                             Finland  
-FJ                             Fiji 
-FK                             Falkland Islands 
-FR                             France   
-FW                             Wallis and Futuna Island 
-GB                             Gambia   
-GC                             Cayman Island
-GH                             Ghana
-GI                             Gibraltar
-GL                             Greenland
-GN                             Guinea   
-GO                             Gabon
-GQ                             Equatorial Guinea
-GR                             Greece   
-GU                             Guatemala
-GW                             Guinea-Bissau
-GY                             Guyana   
-HA                             Haiti
-HI, KA, LN, MH, MY, NZ, PN, WK Pacific Ocean Islands
-HK                             Hong Kong
-HO                             Honduras 
-HU                             Hungary  
-HV                             Burkina Faso 
-IC                             Comoro Islands   
-ID                             Indonesia
-IE                             Ireland  
-IL                             Iceland  
-IN                             India
-IQ                             Iraq 
-IR                             Iran 
-IS                             Israel   
-IV                             Ivory Coast  
-IY                             Italy
-JD                             Jordan   
-JM                             Jamaica  
-JP                             Japan
-KB                             Kiribati 
-KN, TN, UG                     Kenya, Tanzania, Uganda  
-KO                             South Korea  
-KP                             Kampuchea (Cambodia) 
-KR                             North Korea  
-KU                             Cook Islands 
-KW                             Kuwait   
-LA                             Laos 
-LB                             Lebanon  
-LC                             St. Lucia and St. Vincent
-LI                             Liberia  
-LN                             Southern Line Islands
-LY                             Libya
-MC, CR                         Morocco, Canary Islands  
-MF                             St. Martin, St. Bartholomew, Guadalope, other Islands
-MG                             Madagascar   
-MI                             Mali 
-ML                             Malta
-MN                             St. Maarten, St. Eustatius, Saba 
-MO                             Mongolia 
-MR                             Martinique   
-MS, SK                         Malaysia, Sarawak and Sabah  
-MT                             Mauritania   
-MU                             Macau
-MV                             Maldives 
-MW, ZB, ZW                     Malawi, Zambia, Zimbabwe 
-MX                             Mexico   
-MZ                             Mozambique   
-NC                             New Caledonia and Loyalty Islands
-NG                             Papua-New Guinea 
-NH                             Vanuatu  
-NI                             Nigeria  
-NK                             Nicaragua
-NL                             Netherlands  
-NO                             Norway   
-NP                             Nepal
-NR                             Niger
-NU                             Netherlands Antilles (Aruba, Curacao, and Bonaire)   
-NW                             Nauru
-NZ                             New Zealand  
-OM                             Oman 
-OS                             Austria  
-PF                             French Polynesia 
-PH                             Philippines  
-PK                             Pakistan 
-PL                             Poland   
-PM                             Panama and Canal Zone
-PO, AZ, CV, MD                 Portugal, Azores, Cape Verde, Madeira
-PR                             Peru 
-PU, VI                         Puerto Rico, Virgin I.   
-PY                             Paraguay 
-QT                             Qatar
-RA                             Former Soviet Union-Asia 
-RS                             Former Soviet Union-Europe   
-RW                             Rwanda   
-SB                             Sri Lanka
-SC                             Seychelles   
-SD                             Saudi Arabia 
-SG                             Senegal  
-SI                             Somalia  
-SL                             Sierra Leone 
-SM                             Surinam  
-SN                             Sweden   
-SO                             Solomon Islands  
-SP                             Spain
-SR                             Singapore
-SU                             Sudan
-SW, LT                         Switzerland, Liechtenstein   
-SY                             Syria
-TD                             Trinidad and Tobago  
-TG                             Togo 
-TH                             Thailand 
-TK                             Tokelau Islands  
-TO                             Tonga
-TS                             Tunisia  
-TU                             Turkey   
-TV                             Tuvalu   
-TW                             Taiwan   
-UK                             United Kingdom (includes Northern Ireland)   
-UR                             Ukraine  
-UY                             Uruguay  
-VI                             Anguilla (Virgin Islands)
-VN                             Venezuela
-VS                             Viet-nam 
-YE                             Yemen
-YG, AB, LJ, RH                 Yugoslavia, Albania, Slovenia, Croatia   
-ZA, BC, BV, LS, NM, SV         S. Africa, Botswana, Bouvet I., Lesotho, Namibia, Swaziland  
-ZM                             Samoa
-ZR                             Zaire
-(various)                      United States
-(various)                      Antarctica   
+CountryID;CountryName
+AB;Albania 
+AG;Argentina
+AH;Afghanistan 
+AI;Ocean Islands
+BT;Ocean Islands
+FR;Ocean Islands
+HE;Ocean Islands
+MA;Ocean Islands
+RE;Ocean Islands
+TP;Ocean Islands
+AL;Algeria 
+AN;Angola 
+AT;Antigua, St. Kitts, Nevis, Barbuda, and other Islands
+AU;Australia and Additional Islands 
+BA;Bahamas 
+TI;Turks and Caicos Islands
+BE;Bermuda 
+BF;Brunei 
+BH;Belize 
+BI;Burundi 
+BJ;Benin
+BM;Burma
+BN;Bahrain 
+BO;Bolivia 
+BR;Barbados
+GD;Barbados
+BU;Bulgaria 
+BW;Bangladesh 
+BX;Belgium and Luxembourg 
+BY;Byelorussia 
+BZ;Brazil 
+CA;Clipperton 
+CD;Chad 
+CE;Central African Republic 
+CG;Congo
+CH;Chile
+CI;Peoples Republic of China
+CM;Cameroon 
+CN;Canada 
+CO;Colombia 
+CS;Costa Rica 
+CT;Canton Island
+CU;Cuba 
+CY;Cyprus 
+CZ;Czechoslovakia 
+DD;Germany (former East)
+DL;Germany (former West)
+DJ;Djibouti 
+DN;Denmark
+FA;Faeroe Islands 
+DO;Dominica 
+DR;Dominican Republic 
+DY;Democratic Yemen 
+EG;Egypt
+EQ;Ecuador 
+ER;United Arab Emirates 
+ES;El Salvador 
+ET;Ethiopia 
+FG;French Guiana
+FI;Finland 
+FJ;Fiji 
+FK;Falkland Islands 
+FR;France 
+FW;Wallis and Futuna Island 
+GB;Gambia 
+GC;Cayman Island
+GH;Ghana
+GI;Gibraltar
+GL;Greenland
+GN;Guinea 
+GO;Gabon
+GQ;Equatorial Guinea
+GR;Greece 
+GU;Guatemala
+GW;Guinea-Bissau
+GY;Guyana 
+HA;Haiti
+HI;Pacific Ocean Islands
+KA;Pacific Ocean Islands
+LN;Pacific Ocean Islands
+MH;Pacific Ocean Islands
+MY;Pacific Ocean Islands
+NZ;Pacific Ocean Islands
+PN;Pacific Ocean Islands
+WK;Pacific Ocean Islands
+HK;Hong Kong
+HO;Honduras 
+HU;Hungary 
+HV;Burkina Faso 
+IC;Comoro Islands 
+ID;Indonesia
+IE;Ireland 
+IL;Iceland 
+IN;India
+IQ;Iraq 
+IR;Iran 
+IS;Israel 
+IV;Ivory Coast 
+IY;Italy
+JD;Jordan 
+JM;Jamaica 
+JP;Japan
+KB;Kiribati 
+KN;Kenya 
+TN;Tanzania
+UG;Uganda 
+KO;South Korea 
+KP;Kampuchea (Cambodia) 
+KR;North Korea 
+KU;Cook Islands 
+KW;Kuwait 
+LA;Laos 
+LB;Lebanon 
+LC;St. Lucia and St. Vincent
+LI;Liberia 
+LN;Southern Line Islands
+LY;Libya
+MC;Morocco
+CR;Canary Islands 
+MF;St. Martin, St. Bartholomew, Guadalope, other Islands
+MG;Madagascar 
+MI;Mali 
+ML;Malta
+MN;St. Maarten, St. Eustatius, Saba 
+MO;Mongolia 
+MR;Martinique 
+MS;Malaysia
+SK;Sarawak and Sabah 
+MT;Mauritania 
+MU;Macau
+MV;Maldives 
+MW;Malawi
+ZB;Zambia
+ZW;Zimbabwe 
+MX;Mexico 
+MZ;Mozambique 
+NC;New Caledonia and Loyalty Islands
+NG;Papua-New Guinea 
+NH;Vanuatu 
+NI;Nigeria 
+NK;Nicaragua
+NL;Netherlands 
+NO;Norway 
+NP;Nepal
+NR;Niger
+NU;Netherlands Antilles (Aruba, Curacao, and Bonaire) 
+NW;Nauru
+NZ;New Zealand 
+OM;Oman 
+OS;Austria 
+PF;French Polynesia 
+PH;Philippines 
+PK;Pakistan 
+PL;Poland 
+PM;Panama and Canal Zone
+PO;Portugal
+AZ;Azores
+CV;Cape Verde
+MD;Madeira
+PR;Peru 
+PU;Puerto Rico, 
+VI;Virgin I. 
+PY;Paraguay 
+QT;Qatar
+RA;Former Soviet Union-Asia 
+RS;Former Soviet Union-Europe 
+RW;Rwanda 
+SB;Sri Lanka
+SC;Seychelles 
+SD;Saudi Arabia 
+SG;Senegal 
+SI;Somalia 
+SL;Sierra Leone 
+SM;Surinam 
+SN;Sweden 
+SO;Solomon Islands 
+SP;Spain
+SR;Singapore
+SU;Sudan
+SW;Switzerland
+LT;Liechtenstein 
+SY;Syria
+TD;Trinidad and Tobago 
+TG;Togo 
+TH;Thailand 
+TK;Tokelau Islands 
+TO;Tonga
+TS;Tunisia 
+TU;Turkey 
+TV;Tuvalu 
+TW;Taiwan 
+UK;United Kingdom (includes Northern Ireland) 
+UR;Ukraine 
+UY;Uruguay 
+VI;Anguilla (Virgin Islands)
+VN;Venezuela
+VS;Viet-nam 
+YE;Yemen
+YG;Yugoslavia
+AB;Albania
+LJ;Slovenia
+RH;Croatia 
+ZA;S. Africa 
+BC;Botswana
+BV;Bouvet I.
+LS;Lesotho
+NM;Namibia
+SV;Swaziland
+ZM;Samoa
+ZR;Zaire
+XX;United States
+XX;Antarctica 

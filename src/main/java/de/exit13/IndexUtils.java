@@ -20,13 +20,12 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.indices.IndexAlreadyExistsException;
 
-import javax.security.auth.login.Configuration;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 /**
- * Created by frank.vogel on 17.02.2015.
+ * Created by el shotodore on 17.02.2015.
  */
 public class IndexUtils {
     private Client client;
@@ -44,7 +43,7 @@ public class IndexUtils {
 
         filterExpression = (null != filterExpression | !filterExpression.equals(""))? filterExpression : Config.FILTER_EXPRESSION;
 
-        ArrayList<File> fileList = utils.readFilesFromDirectory(Config.DATA_DIR, filterExpression);
+        ArrayList<File> fileList = null;//utils.fileToList(Config.SRC_DATA_DIR, filterExpression);
 
         for(File file : fileList) {
             processGzipFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);
