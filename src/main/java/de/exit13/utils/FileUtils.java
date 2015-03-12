@@ -1,4 +1,4 @@
-package de.exit13;
+package de.exit13.utils;
 
 import org.json.simple.JSONObject;
 
@@ -13,9 +13,9 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
 /**
- * Created by el shotodore on 20.02.2015.
+ * Created by elshotodore on 20.02.2015.
  */
-public class Utils {
+public class FileUtils {
 
     public ArrayList<String> fileToList(String file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));

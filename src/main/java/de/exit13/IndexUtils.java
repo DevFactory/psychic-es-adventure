@@ -1,5 +1,6 @@
 package de.exit13;
 
+import de.exit13.utils.FileUtils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
@@ -25,17 +26,17 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 /**
- * Created by el shotodore on 17.02.2015.
+ * Created by elshotodore on 17.02.2015.
  */
 public class IndexUtils {
     private Client client;
-    private Utils utils;
+    private FileUtils fileUtils;
     private final static Logger LOGGER = Logger.getLogger(IndexUtils.class.getName());;
 
     public IndexUtils() {
         Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name", Config.CLUSTER_NAME).put("client.transport.sniff", true).build();
         client = new TransportClient(settings).addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
-        utils = new Utils();
+        fileUtils = new FileUtils();
     }
 
 
@@ -157,7 +158,7 @@ public class IndexUtils {
         InputStreamReader inputStreamReader = null;
         BufferedReader bufferedReader = null;
         BulkProcessor bulkProcessor = null;
-        Utils utils = new Utils();
+        FileUtils fileUtils = new FileUtils();
         try {
             fileInputStream = new FileInputStream(gzipFile);
             gzipInputStream = new GZIPInputStream(fileInputStream);
@@ -167,12 +168,12 @@ public class IndexUtils {
             bulkProcessor = createBulkprocessor(client);
             String jsonLine = null;
             int i = 1;
-            System.out.println("File: " + Config.ANSI_RED + gzipFile.getName() + Config.ANSI_RESET);
+            System.out.println("File: " + Config.ANSI_RED_FG + gzipFile.getName() + Config.ANSI_RESET);
             while ((line = bufferedReader.readLine()) != null) {
-                jsonLine = utils.convertLineToJson(line.toString()).toJSONString();
+                jsonLine = fileUtils.convertLineToJson(line.toString()).toJSONString();
                 bulkProcessor.add(createIndexRequest(jsonLine, indexName, indexType));
                 if(i % 50000 == 0) {
-                    System.out.print("processed " + Config.ANSI_RED +  i + Config.ANSI_RESET + " lines...\r");
+                    System.out.print("processed " + Config.ANSI_RED_FG +  i + Config.ANSI_RESET + " lines...\r");
                 }
                 // stop if set to value XX > 0 and XX reached;
                 if(maxLines > 0) {
@@ -195,7 +196,7 @@ public class IndexUtils {
         }
         long fileProcessEndTime = System.nanoTime();
         long fileProcessDuration = (fileProcessEndTime - fileProcessStartTime) / 1000000;
-        System.out.println("Time: " + Config.ANSI_RED  + fileProcessDuration + " ms." + Config.ANSI_RESET);
+        System.out.println("Time: " + Config.ANSI_RED_FG + fileProcessDuration + " ms." + Config.ANSI_RESET);
         System.out.println("--------------------------------------------------------------------------------------------------------");
     }
 

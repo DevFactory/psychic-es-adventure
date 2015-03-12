@@ -1,17 +1,14 @@
 package de.exit13.db;
 
-import de.exit13.Utils;
+import de.exit13.utils.FileUtils;
 
-import javax.swing.text.html.HTMLDocument;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by el shotodore on 12.03.15.
+ * Created by elshotodore on 12.03.15.
  */
 public class MySqlImpl implements DatabaseIntf {
     private Connection connection;
@@ -39,11 +36,11 @@ public class MySqlImpl implements DatabaseIntf {
             String countryCode = "XX";
             String countryName = "ABC 123";
             List<String> fileContent;
-            Utils utils = new Utils();
+            FileUtils fileUtils = new FileUtils();
             PreparedStatement preparedStatement;
 
             try {
-                fileContent = utils.fileToList("/data/rawdata/country-id.txt");
+                fileContent = fileUtils.fileToList("/data/rawdata/country-id.txt");
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new RuntimeException();

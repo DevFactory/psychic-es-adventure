@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by el shotodore on 12.03.15.
+ * Created by elshotodore on 12.03.15.
  */
 public interface DatabaseIntf {
 

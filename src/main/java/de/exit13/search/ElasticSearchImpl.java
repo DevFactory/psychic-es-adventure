@@ -3,7 +3,7 @@ package de.exit13.search;
 import org.elasticsearch.action.search.SearchResponse;
 
 /**
- * Created by el shotodore on 12.03.15.
+ * Created by elshotodore on 12.03.15.
  */
 public class ElasticSearchImpl implements SearchIntf{
 

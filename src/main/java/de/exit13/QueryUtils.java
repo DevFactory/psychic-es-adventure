@@ -12,7 +12,7 @@ import org.elasticsearch.search.sort.SortOrder;
 import java.util.Date;
 
 /**
- * Created by el shotodore on 18.02.2015.
+ * Created by elshotodore on 18.02.2015.
  */
 public class QueryUtils {
     private Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
