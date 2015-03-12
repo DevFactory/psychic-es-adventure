@@ -12,13 +12,11 @@ import java.util.Map;
 public interface DatabaseIntf {
 
     // dealing with the db
-    Connection openConnection(String user, String password, String server, String db);
+    Connection openConnection(String dbUser, String dbPass, String dbServer, String db);
     boolean closeConnection(Connection connection);
 
 
     // some useful stuff
     List<List<String>> resultToList(ResultSet resultSet) throws SQLException;
 
-    // some not so useful stuff
-    void initialImport() throws SQLException;
 }

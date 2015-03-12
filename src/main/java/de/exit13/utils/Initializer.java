@@ -1,9 +1,8 @@
 package de.exit13.utils;
 
-import de.exit13.db.MysqlImpl;
+import de.exit13.db.MySQLImpl;
 import de.exit13.utils.Configuration.Config;
 import de.exit13.utils.Configuration.MySQLConfig;
-import sun.management.ConnectorAddressLink;
 
 import java.sql.Connection;
 
@@ -37,7 +36,7 @@ public class Initializer {
     private String checkMYSQLConfig() {
         String status = null;
         MySQLConfig mysqlConfig = new MySQLConfig();
-        MysqlImpl mysql = new MysqlImpl();
+        MySQLImpl mysql = new MySQLImpl();
         Connection connection = mysql.openConnection(mysqlConfig.getDB_USER(), mysqlConfig.getDB_PASSWORD(), mysqlConfig.getDB_SERVER(), mysqlConfig.getDB());
         return status;
     }
