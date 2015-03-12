@@ -18,7 +18,12 @@ import static java.lang.Long.parseLong;
 public class FileUtils {
 
     public ArrayList<String> fileToList(String file) throws IOException {
+        String fileExtension = file.substring(file.lastIndexOf(".")-1, file.length());
+        System.out.println("FILE EXTENSION: " +  fileExtension);
+        return null;
+        /*
         BufferedReader br = new BufferedReader(new FileReader(file));
+
         ArrayList<String> fileContent = new ArrayList<String>();
         String line;
         int i = 0;
@@ -30,6 +35,7 @@ public class FileUtils {
         }
         br.close();
         return fileContent;
+        */
     }
 
     public JSONObject convertLineToJson(String line) {

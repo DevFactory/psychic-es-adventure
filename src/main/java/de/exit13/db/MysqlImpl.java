@@ -1,5 +1,6 @@
 package de.exit13.db;
 
+import de.exit13.utils.Configuration.MySQLConfig;
 import de.exit13.utils.FileUtils;
 
 import java.io.IOException;
@@ -10,18 +11,15 @@ import java.util.List;
 /**
  * Created by elshotodore on 12.03.15.
  */
-public class MySqlImpl implements DatabaseIntf {
+public class MysqlImpl implements DatabaseIntf {
     private Connection connection;
-    String user ="sqluser";
-    String password="sqluserpw";
-    String server = "localhost";
-    String db = "climatedata";
-    String table = "countries";
+    private MySQLConfig mysqlConfig = new MySQLConfig();
+    private PreparedStatement preparedStatement;
+
+    private String dbTable;
 
     public void initialImport() throws SQLException {
-        System.out.println("initialImport");
-        connection = openConnection(user, password, server, db);
-
+        connection = openConnection(mysqlConfig.getDB_USER(), mysqlConfig.getDB_PASSWORD(), mysqlConfig.getDB_SERVER(), mysqlConfig.getDB());
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -33,8 +31,6 @@ public class MySqlImpl implements DatabaseIntf {
         try {
             // INSERT INTO countries values (default, 'AG', 'Argentina');C
 
-            String countryCode = "XX";
-            String countryName = "ABC 123";
             List<String> fileContent;
             FileUtils fileUtils = new FileUtils();
             PreparedStatement preparedStatement;
@@ -45,18 +41,18 @@ public class MySqlImpl implements DatabaseIntf {
                 e.printStackTrace();
                 throw new RuntimeException();
             }
-            String country_id;
-            String country_name;
+            String countryCode;
+            String countryName;
             for(String line : fileContent) {
                 String[] pieces = line.split(";");
-                country_id = pieces[0];
-                country_name = pieces[1];
+                countryCode = pieces[0];
+                countryName = pieces[1];
 
-                if(!recordExists("country_id", country_id)) {
-                    String query = " insert into " + db + "." + table + " (country_id, country_name) values (?, ?)";
+                if(!recordExists("countryCode", countryCode)) {
+                    String query = " insert into " + mysqlConfig.getDB() + "." + dbTable + " (countryCode, countryName) values (?, ?)";
                     preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, country_id);
-                    preparedStatement.setString(2, country_name);
+                    preparedStatement.setString(1, countryCode);
+                    preparedStatement.setString(2, countryName);
 
                     preparedStatement.execute();
                 }
@@ -80,7 +76,7 @@ public class MySqlImpl implements DatabaseIntf {
     private boolean recordExists(String fieldName, String fieldValue) throws SQLException {
         boolean answer = true;
         //does it exist already?
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from " + db + "." + table + " where " + fieldName + " = '" + fieldValue + "'");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from " + mysqlConfig.getDB() + "." + dbTable + " where " + fieldName + " = '" + fieldValue + "'");
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultToList(resultSet).size() == 0) {
             answer = false;

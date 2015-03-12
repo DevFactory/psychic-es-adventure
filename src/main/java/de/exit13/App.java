@@ -1,10 +1,7 @@
 package de.exit13;
 
-import de.exit13.db.DatabaseIntf;
-import de.exit13.db.MySqlImpl;
+import de.exit13.utils.Configuration.Config;
 import de.exit13.utils.Initializer;
-
-import java.sql.SQLException;
 
 /**
  * Created by elshotodore on 16.02.2015.
@@ -14,10 +11,13 @@ public class App {
     public static void main(String args[]) {
         Initializer i = new Initializer();
         try {
-            boolean doImport = true;
-            if(!i.bootstrap(doImport)) {
-                System.out.println("Sorry!");
-            };
+            boolean initialSetup = true;
+            String status = i.bootstrap(initialSetup);
+            if(null != status) {
+                System.out.println(Config.ANSI_RED_FG + "ERROR initializing the app!" + Config.ANSI_RESET);
+
+                System.out.println("Status:" + status);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();

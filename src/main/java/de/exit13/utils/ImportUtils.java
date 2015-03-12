@@ -1,29 +1,38 @@
 package de.exit13.utils;
 
-import de.exit13.Config;
+import de.exit13.db.MysqlImpl;
+import de.exit13.utils.Configuration.Config;
+import de.exit13.utils.Configuration.MySQLConfig;
 
 import java.sql.Connection;
-
-import static de.exit13.utils.enums.Utils.done;
 
 /**
  * Created by elshotodore on 12.03.15.
  */
 public class ImportUtils {
 
-    public void mySqlImport( ) {
-        System.out.println(Config.ANSI_RED_FG + "mysql " + Config.ANSI_RESET +" import...");
+
+    public String mysqlImport( ) {
+
+        System.out.println(Config.ANSI_RED_FG + "mysql" + Config.ANSI_RESET +" import...");
         Connection connection;
+
+        MySQLConfig mySQLConfig = new MySQLConfig();
+        MysqlImpl mysql = new MysqlImpl();
+
         String user = "sqluser";
         String password= "sqluserpw";
         String server = "localhost";
         String db = "climatedata";
         String table = "countries";
-        done();
+
+        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
+        return "";
     }
 
     public void elasticImport() {
-        System.out.println(Config.ANSI_RED_FG + "elastic " + Config.ANSI_RESET +" import...");
-        done();
+        System.out.println(Config.ANSI_RED_FG + "elastic" + Config.ANSI_RESET +" import...");
+
+        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
     }
 }

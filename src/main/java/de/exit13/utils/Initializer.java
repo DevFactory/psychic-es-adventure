@@ -1,48 +1,51 @@
 package de.exit13.utils;
 
-import de.exit13.Config;
+import de.exit13.db.MysqlImpl;
+import de.exit13.utils.Configuration.Config;
+import de.exit13.utils.Configuration.MySQLConfig;
+import sun.management.ConnectorAddressLink;
 
-import static de.exit13.utils.enums.Utils.done;
+import java.sql.Connection;
 
 /**
  * Created by elshotodore on 12.03.15.
  */
 public class Initializer {
 
-    public boolean bootstrap(boolean doImport) throws Exception {
-        boolean success = true;
-        System.out.println("Checking " + Config.ANSI_RED_FG + "mySql" + Config.ANSI_RESET);
-        success = checkMYSQLConfig();
-        done();
+    public String bootstrap(boolean initialSetup) throws Exception {
+        String status = null;
+        System.out.println("Checking " + Config.ANSI_GREEN_FG + "mySql" + Config.ANSI_RESET + " status...");
+        status = checkMYSQLConfig();
+        if(status != null) { return status; }
+        System.out.println(Config.ANSI_GREEN_FG + "OK!" + Config.ANSI_RESET);
 
-        System.out.println("Checking  " + Config.ANSI_RED_FG + "ElasticSearch" + Config.ANSI_RESET);
-        success = checkESConfig();
-        done();
+        System.out.println("Checking  " + Config.ANSI_GREEN_FG + "elastic" + Config.ANSI_RESET + " status...");
+        status = checkESConfig();
+        if(status != null) { return status; }
+        System.out.println(Config.ANSI_GREEN_FG + "OK!" + Config.ANSI_RESET);
 
 
-        if(doImport == true) {
-            ImportUtils iu = new ImportUtils();
-            iu.mySqlImport();
-            iu.elasticImport();
+        if(initialSetup == true) {
+            ImportUtils importUtils = new ImportUtils();
+            importUtils.mysqlImport();
+            importUtils.elasticImport();
         }
-        return success;
+
+        return status;
     }
 
-    private boolean checkMYSQLConfig() throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            System.out.print(".");
-            Thread.sleep(50);
-        }
-        System.out.println("");        return true;
+    private String checkMYSQLConfig() {
+        String status = null;
+        MySQLConfig mysqlConfig = new MySQLConfig();
+        MysqlImpl mysql = new MysqlImpl();
+        Connection connection = mysql.openConnection(mysqlConfig.getDB_USER(), mysqlConfig.getDB_PASSWORD(), mysqlConfig.getDB_SERVER(), mysqlConfig.getDB());
+        return status;
     }
 
 
-    private boolean checkESConfig() throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            System.out.print(".");
-            Thread.sleep(50);
-        }
-        System.out.println("");
-        return true;
+    private String checkESConfig() throws InterruptedException {
+        String status = null;
+
+        return status;
     }
 }
