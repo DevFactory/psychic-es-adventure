@@ -18,14 +18,17 @@ CREATE TABLE weatherstations (id INT NOT NULL AUTO_INCREMENT,
     elevation INTEGER,
     PRIMARY KEY (id));
 
-INSERT INTO weatherstations values (default, '33913', 'AIN EL','AL', '3623N', '00637E', 611);
+--INSERT INTO weatherstations values (default, '33913', 'AIN EL','AL', '3623N', '00637E', 611);
 
 CREATE TABLE countries (id INT NOT NULL AUTO_INCREMENT,
     countryCode VARCHAR(2) NOT NULL,
     countryName VARCHAR(100),
     PRIMARY KEY (id));
 
-INSERT INTO countries values (default, 'AB', 'Albania');
+select w.name, w.countryCode, c.countryName, w.latitude, w.longitude from weatherstations w inner join countries c where c.countryCode=w.countryCode order by c.countryName;
+
+
+--INSERT INTO countries values (default, 'AB', 'Albania');
 -- Create an Index and name it climate
 
 -- Get the mapping for the index with name awi
