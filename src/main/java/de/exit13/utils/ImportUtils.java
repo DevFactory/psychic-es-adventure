@@ -49,7 +49,7 @@ public class ImportUtils {
                 String fields[] = new String[] {"countryCode", "countryName"};
                 String values[] = new String[] {countryCode,countryName};
                 if(!dbRecordExists(dbTable, fields, values)) {
-                    String query = " insert into " + mySQLConfig.getDB() + "." + dbTable + " (countryCode, countryName) values (?, ?)";
+                    String query = "insert into " + mySQLConfig.getDB() + "." + dbTable + " (countryCode, countryName) values (?, ?)";
                     preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setString(1, countryCode);
                     preparedStatement.setString(2, countryName);
@@ -85,7 +85,6 @@ public class ImportUtils {
 
             for(String line : fileContent) {
                 String[] pieces = line.split(";");
-
                 wban = pieces[0].trim();
                 name = pieces[1].trim();
                 countryCode = pieces[2].trim();
@@ -111,7 +110,6 @@ public class ImportUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
         System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
     }
 

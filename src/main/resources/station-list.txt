@@ -163,5 +163,4 @@
 33121; EL DJEM                          ; TS;  3520N; 01040E; 9999  
 33003; SISI AHMED                       ; TS;  3712N; 00950E;    4  
 33307; ADANA                            ; TU;  3659N; 03518E;   20  
-15027; WARRINGTON                       ; UK;  5323N; 00239W;   27  
-     
+15027; WARRINGTON                       ; UK;  5323N; 00239W;   27

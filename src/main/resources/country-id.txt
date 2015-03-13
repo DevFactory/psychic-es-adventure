@@ -1,4 +1,4 @@
-CountryID;CountryName
+#CountryID;CountryName
 AB;Albania 
 AG;Argentina
 AH;Afghanistan 
@@ -210,4 +210,4 @@ SV;Swaziland
 ZM;Samoa
 ZR;Zaire
 XX;United States
-XX;Antarctica 
+XX;Antarctica

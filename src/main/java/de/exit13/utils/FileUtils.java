@@ -27,7 +27,9 @@ public class FileUtils {
         String line;
         int i = 0;
         while ((line = br.readLine()) != null) {
-            if(i > 1 && !line.startsWith("#")) {
+            // skip empty lines and lines with #
+            if(!line.startsWith("#") && line.trim().length() != 0) {
+
                 fileContent.add(line);
             }
             i++;
