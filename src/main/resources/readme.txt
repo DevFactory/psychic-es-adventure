@@ -13,8 +13,8 @@ CREATE TABLE weatherstations (id INT NOT NULL AUTO_INCREMENT,
     wban VARCHAR(5) NOT NULL,
     name VARCHAR(100),
     countryCode VARCHAR(5) NOT NULL,
-    latitude VARCHAR(5),
-    longitude VARCHAR(5) NOT NULL,
+    latitude VARCHAR(10),
+    longitude VARCHAR(10),
     elevation INTEGER,
     PRIMARY KEY (id));
 
@@ -26,8 +26,7 @@ CREATE TABLE countries (id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id));
 
 INSERT INTO countries values (default, 'AB', 'Albania');
--- Create an Index and name it
-climate
+-- Create an Index and name it climate
 
 -- Get the mapping for the index with name awi
 GET http://localhost:9200/awi/_mapping
