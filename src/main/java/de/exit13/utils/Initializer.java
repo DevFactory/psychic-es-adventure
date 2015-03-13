@@ -25,9 +25,10 @@ public class Initializer {
 
 
         if(initialSetup == true) {
-            ImportUtils importUtils = new ImportUtils();
-            importUtils.mysqlImport();
-            importUtils.elasticImport();
+            DBImportUtils dbImportUtils = new DBImportUtils();
+            dbImportUtils.mysqlImport();
+            ESImportUtils esImportUtils = new ESImportUtils();
+            esImportUtils.elasticImport();
         }
 
         return status;

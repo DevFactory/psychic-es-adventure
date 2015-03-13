@@ -45,7 +45,7 @@ public class IndexUtils {
 
         filterExpression = (null != filterExpression | !filterExpression.equals(""))? filterExpression : Config.FILTER_EXPRESSION;
 
-        ArrayList<File> fileList = null;//utils.fileToList(Config.SRC_DATA_DIR, filterExpression);
+        ArrayList<File> fileList = null;//utils.readFileContent(Config.SRC_DATA_DIR, filterExpression);
 
         for(File file : fileList) {
             processGzipFile(file, Config.MAX_LINES_TO_PROCESS, indexName, indexType);

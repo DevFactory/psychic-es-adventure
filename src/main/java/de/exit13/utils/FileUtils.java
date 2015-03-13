@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static java.lang.Float.parseFloat;
@@ -17,13 +19,14 @@ import static java.lang.Long.parseLong;
  */
 public class FileUtils {
 
-    public ArrayList<String> fileToList(String file) throws IOException {
+    public ArrayList<String> readFileContent(String file) throws IOException {
+        ArrayList<String> fileContent = new ArrayList<String>();
+
         String fileExtension = file.substring(file.lastIndexOf("."), file.length());
         //System.out.println("FILE EXTENSION: " +  fileExtension);
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        ArrayList<String> fileContent = new ArrayList<String>();
         String line;
         int i = 0;
         while ((line = br.readLine()) != null) {
@@ -37,6 +40,20 @@ public class FileUtils {
         br.close();
         return fileContent;
 
+    }
+
+    public ArrayList<String> readDirectory(String directory, String filter) throws IOException {
+        ArrayList<String> directoryContent = new ArrayList<String>();
+
+        File folder = new File(directory);
+        File[] listOfFiles  = folder.listFiles();
+
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                System.out.println(file.getName());
+            }
+        }
+        return directoryContent;
     }
 
     public JSONObject convertLineToJson(String line) {

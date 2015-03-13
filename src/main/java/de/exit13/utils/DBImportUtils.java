@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by elshotodore on 12.03.15.
  */
-public class ImportUtils {
+public class DBImportUtils {
 
     MySQLConfig mySQLConfig = new MySQLConfig();
     MySQLImpl mysql = new MySQLImpl();
@@ -36,7 +36,7 @@ public class ImportUtils {
             FileUtils fileUtils = new FileUtils();
             PreparedStatement preparedStatement;
             try {
-                fileContent = fileUtils.fileToList("/data/rawdata/country-id.txt");
+                fileContent = fileUtils.readFileContent("/data/rawdata/country-id.txt");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,7 +72,7 @@ public class ImportUtils {
             FileUtils fileUtils = new FileUtils();
             PreparedStatement preparedStatement;
             try {
-                fileContent = fileUtils.fileToList("/data/rawdata/station-list.txt");
+                fileContent = fileUtils.readFileContent("/data/rawdata/station-list.txt");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -139,13 +139,5 @@ public class ImportUtils {
             answer = false;
         }
         return answer;
-    }
-
-
-
-    public void elasticImport() {
-        System.out.println(Config.ANSI_RED_FG + "elastic" + Config.ANSI_RESET +" import...");
-
-        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
     }
 }
