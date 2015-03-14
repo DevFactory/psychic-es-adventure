@@ -4,11 +4,13 @@ Where to get the data?
 DWD
 stations -> ftp://ftp-cdc.dwd.de/pub/CDC/help/KL_Tageswerte_Beschreibung_Stationen.txt
 data -> ftp://ftp-cdc.dwd.de/pub/CDC/observations_germany/climate/daily/kl/
+/data/rawdata/DWD/KL_Tageswerte/tageswerte_01341_20081201_20110928_hist.zip
 
 CLIMAT
 stations -> ftp://ftp-cdc.dwd.de/pub/CDC/help/stations_list_CLIMAT_data.txt
-data -> ftp://ftp-cdc.dwd.de/pub/CDC/observations_global/CLIMAT/monthly/raw/
-
+data -> ftp://ftp-cdc.dwd.de/pub/CDC/obsesudorvations_global/CLIMAT/monthly/raw/
+03/20003 -> /data/rawdata/CLIMAT/CLIMAT_RAW_200303.txt
+stations -> aaa_stations_list_CLIMAT_data.txt
 TODOs
 install mysql
 sudo apt-get install mysql-server-5.6
@@ -19,29 +21,6 @@ use climatedata;
 
 grant usage on *.* to sqluser@localhost identified by 'sqluserpw';
 grant all privileges on climatedata.* to sqluser@localhost;
-
-CREATE TABLE weatherstations_CLIMATE (id INT NOT NULL AUTO_INCREMENT,
-    -- wmo_station_id
-    station_id VARCHAR(6),
-    station_name VARCHAR(255),
-    latitude VARCHAR(15),
-    longitude VARCHAR(15),
-    elevation INTEGER,
-    extra1 VARCHAR(255),
-    country VARCHAR(255),
-    PRIMARY KEY (id));
-
-CREATE TABLE weatherstations_DWD (id INT NOT NULL AUTO_INCREMENT,
-    station_id VARCHAR(6),
-    from_date VARCHAR(8),
-    to_date VARCHAR(8),
-    elevation INTEGER,
-    latitude VARCHAR(15),
-    longitude VARCHAR(15),
-    station_name VARCHAR(255),
-    state VARCHAR(255)
-    country VARCHAR(255),
-    PRIMARY KEY (id));
 
 /*
 CREATE TABLE weatherstations (id INT NOT NULL AUTO_INCREMENT,
@@ -63,6 +42,7 @@ CREATE TABLE countries (id INT NOT NULL AUTO_INCREMENT,
 --INSERT INTO countries values (default, 'AB', 'Albania');
 
 -- select w.name, w.countryCode, c.countryName, w.latitude, w.longitude from weatherstations w inner join countries c where c.countryCode=w.countryCode order by c.countryName;
+-- select * from weatherstations_WMO order by CAST(elevation AS SIGNED) DESC;
 
 
 -- Create an Index and name it climate

@@ -17,6 +17,7 @@ public class App {
                 System.out.println(Config.ANSI_RED_FG + "ERROR initializing the app!" + Config.ANSI_RESET);
 
                 System.out.println("Status:" + status);
+                System.exit(13);
             }
         } catch (Exception e) {
             e.printStackTrace();

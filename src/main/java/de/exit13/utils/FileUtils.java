@@ -19,13 +19,13 @@ import static java.lang.Long.parseLong;
  */
 public class FileUtils {
 
-    public ArrayList<String> readFileContent(String file) throws IOException {
+    public ArrayList<String> readFileContent(String fileName) throws IOException {
         ArrayList<String> fileContent = new ArrayList<String>();
 
-        String fileExtension = file.substring(file.lastIndexOf("."), file.length());
+        String fileExtension = fileName.substring(fileName.lastIndexOf("."), fileName.length());
         //System.out.println("FILE EXTENSION: " +  fileExtension);
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
 
         String line;
         int i = 0;

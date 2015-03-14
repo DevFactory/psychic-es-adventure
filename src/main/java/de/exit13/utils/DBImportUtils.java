@@ -22,95 +22,74 @@ public class DBImportUtils {
 
     public String mysqlImport( ) {
         connection = mysql.openConnection(mySQLConfig.getDB_USER(), mySQLConfig.getDB_PASSWORD(), mySQLConfig.getDB_SERVER(), mySQLConfig.getDB());
-        importCountries();
-        importWeatherStations();
+        String dbTable = "weatherstations_WMO";
+        String fileName = "/data/rawdata/CLIMAT/aaa_stations_list_CLIMAT_data.txt";
+
+        importStations(dbTable, fileName);
         return "";
     }
 
 
-    private void importCountries() {
-        System.out.println(Config.ANSI_RED_FG + "mysql" + Config.ANSI_RESET +" importing countries...");
-        String dbTable = "countries";
+    private void importStations(String dbTable, String fileName) {
+        System.out.println(Config.ANSI_RED_FG + "mysql" + Config.ANSI_RESET +" importing stations...");
         try {
-            List<String> fileContent = new ArrayList<String>();;
+            List<String> fileContent = new ArrayList<String>();
+            int lineCount = 0;
             FileUtils fileUtils = new FileUtils();
             PreparedStatement preparedStatement;
             try {
-                fileContent = fileUtils.readFileContent("/data/rawdata/country-id.txt");
+                fileContent = fileUtils.readFileContent(fileName);
+                lineCount = fileContent.size()-1; // skip first line containing header info
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String countryCode;
-            String countryName;
+            String station_id = "-9999";
+            String station_name = "n/a";
+            String latitude = "n/a";
+            String longitude = "n/a";
+            String elevation = "-9999";
+            String country_name = "n/a";
+            int i = 0;
             for(String line : fileContent) {
+                //WMO-Station ID; StationName;                               Latitude;  Longitude;       ;        ;Country
+
                 String[] pieces = line.split(";");
-                countryCode = pieces[0];
-                countryName = pieces[1];
-                String fields[] = new String[] {"countryCode", "countryName"};
-                String values[] = new String[] {countryCode,countryName};
-                if(!dbRecordExists(dbTable, fields, values)) {
-                    String query = "insert into " + mySQLConfig.getDB() + "." + dbTable + " (countryCode, countryName) values (?, ?)";
+                int piecesNumber = pieces.length;
+                station_id = pieces[0].trim();
+                station_name = pieces[1].trim();
+                latitude = pieces[2].trim().replace(" ","");
+                longitude = pieces[3].trim().replace(" ","");
+                elevation = pieces[4].trim();
+                if(elevation.equals("")) { elevation = "-9999";}
+                // 5 is some strange duplicate of 4
+                country_name = pieces[6].trim();
+
+
+                String fields[] = new String[] {"station_id", "station_name", "latitude", "longitude", "elevation", "country_name" };
+                String values[] = new String[] {station_id, station_name, latitude, longitude, elevation, country_name };
+                if( !dbRecordExists(dbTable, fields, values) ) {
+                    String query = "insert into " + mySQLConfig.getDB() + "." + dbTable + " (station_id, station_name, latitude, longitude, elevation, country_name) values (?, ?, ?, ?, ?, ?)";
                     preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, countryCode);
-                    preparedStatement.setString(2, countryName);
+
+                    preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, station_id);
+                    preparedStatement.setString(2, station_name);
+                    preparedStatement.setString(3, latitude);
+                    preparedStatement.setString(4, longitude);
+                    preparedStatement.setString(5, elevation);
+                    preparedStatement.setString(6, country_name);
                     preparedStatement.execute();
+
+                    System.out.print("\r" + i + " lines of " + lineCount + " processed.");
+                    //if(i>2) { break;}
+                    i++;
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
-
-    }
-
-    private void importWeatherStations() {
-        System.out.println(Config.ANSI_RED_FG + "mysql" + Config.ANSI_RESET +" importing weather stations...");
-        String dbTable = "weatherstations";
-        try {
-            List<String> fileContent = new ArrayList<String>();;
-            FileUtils fileUtils = new FileUtils();
-            PreparedStatement preparedStatement;
-            try {
-                fileContent = fileUtils.readFileContent("/data/rawdata/station-list.txt");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String wban;
-            String name;
-            String countryCode;
-            String latitude;
-            String longitude;
-            String elevation;
-
-            for(String line : fileContent) {
-                String[] pieces = line.split(";");
-                wban = pieces[0].trim();
-                name = pieces[1].trim();
-                countryCode = pieces[2].trim();
-                latitude = pieces[3].trim();
-                longitude = pieces[4].trim();
-                elevation = pieces[5].trim();
-
-                String fields[] = new String[] {"wban", "name", "countryCode", "latitude", "longitude", "elevation" };
-                String values[] = new String[] {wban, name, countryCode, latitude, longitude, elevation };
-                if(!dbRecordExists(dbTable, fields, values)) {
-                    String query = " insert into " + mySQLConfig.getDB() + "." + dbTable + " (wban, name, countryCode, latitude, longitude, elevation) values (?, ?, ?, ?, ?, ?)";
-                    preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, wban);
-                    preparedStatement.setString(2, name);
-                    preparedStatement.setString(3, countryCode);
-                    preparedStatement.setString(4, latitude);
-                    preparedStatement.setString(5, longitude);
-                    preparedStatement.setInt(6, parseInt(elevation));
-                    preparedStatement.execute();
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
+        System.out.println("\n" +Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
     }
 
     /**
@@ -123,17 +102,23 @@ public class DBImportUtils {
             System.exit(13);
         }
         String selectClause = "";
-        String whereClause = " where ";
+        String whereClause = " WHERE ";
         //does it exist already?
-        selectClause = "SELECT * from " + mySQLConfig.getDB() + "." + dbTable + "";
+        selectClause = "SELECT * FROM " + mySQLConfig.getDB() + "." + dbTable + "";
 
         int i = 0;
         for(String field : fields) {
-            whereClause += field +" = '" + values[i] + "' ";
+            whereClause +="'" + field + "' =  ?";
             if(i<fields.length-1) { whereClause += " AND ";}
             i++;
         }
         PreparedStatement preparedStatement = connection.prepareStatement(selectClause + whereClause);
+        i = 1;
+        for(String field : fields) {
+            preparedStatement.setString(i, values[i-1]);
+            i++;
+        }
+
         ResultSet resultSet = preparedStatement.executeQuery();
         if(mysql.resultToList(resultSet).size() == 0) {
             answer = false;
