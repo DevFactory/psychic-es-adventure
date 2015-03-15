@@ -43,17 +43,23 @@ public class FileUtils {
     }
 
     public ArrayList<String> readDirectory(String directory, String filter) throws IOException {
-        ArrayList<String> directoryContent = new ArrayList<String>();
+        ArrayList<String> fileList = new ArrayList<String>();
 
         File folder = new File(directory);
         File[] listOfFiles  = folder.listFiles();
-
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                System.out.println(file.getName());
+                if(filter != null) {
+                    if (file.getName().matches(filter)) {
+                        fileList.add(file.getName());
+                    }
+                }
+                else {
+                    fileList.add(file.getName());
+                }
             }
         }
-        return directoryContent;
+        return fileList;
     }
 
     public JSONObject convertLineToJson(String line) {

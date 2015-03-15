@@ -38,7 +38,7 @@ public class Initializer {
         String status = null;
         MySQLConfig mysqlConfig = new MySQLConfig();
         MySQLImpl mysql = new MySQLImpl();
-        Connection connection = mysql.openConnection(mysqlConfig.getDB_USER(), mysqlConfig.getDB_PASSWORD(), mysqlConfig.getDB_SERVER(), mysqlConfig.getDB());
+        //Connection connection = mysql.openConnection(mysqlConfig.getDB_USER(), mysqlConfig.getDB_PASSWORD(), mysqlConfig.getDB_SERVER(), mysqlConfig.getDB());
         return status;
     }
 
