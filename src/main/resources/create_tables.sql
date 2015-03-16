@@ -17,7 +17,7 @@ CREATE TABLE weatherstations_WMO (id INT NOT NULL AUTO_INCREMENT,
   elevation VARCHAR(6),
   country_name VARCHAR(255),
   PRIMARY KEY (id));
-  -- e xtra1 VARCHAR(255),
+  -- extra1 VARCHAR(255),
 
 -- SELECT * FROM weatherstations_WMO;
 -- DESCRIBE weatherstations_WMO;

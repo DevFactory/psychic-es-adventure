@@ -1,44 +1,46 @@
 0		--		year	--      year
 1		--		month	--      month of year
 2		--		IIiii	--      station id (wmo)
-GROUP 1
+---------------------------------- GROUP 1 ----------------------------------
 3		--		G1		--      GROUP1
-4		--		Po		--
-5		--		G1		--			
-6		--		P		--			
-7		--		G1		--			
-8		--		sn		--			
-9		--		T		--			
-10		--		st		--			
-11		--		G1		--			
-12		--		sn		--			
-13		--		Tx		--			
-14		--		sn		--			
-15		--		Tn		--			
-16		--		G1		--			
-17		--		e		--			
-18		--		G1		--			
-19		--		R1		--			
-20		--		Rd		--			
-21		--		nr		--			
-22		--		G1		--			
-23		--		S1		--			
-24		--		ps		--			
-25		--		G1		--			
-26		--		mp		--			
-27		--		mT		--			
-28		--		mTx		--			
-29		--		mTn		--			
-30		--		G1		--			
-31		--		me		--			
-32		--		mR		--			
-33		--		mS		--			
-34		--		G2		--			
-35		--		Yb		--			
-36		--		Yc		--			
-37		--		G2		--			
-38		--		Po		--			
-39		--		G2		--			
+4		--		Po		--      Monthly mean pressure at station level, in tenths of a hectopascal
+5		--		G1		--		GROUP1
+6		--		P		--		Monthly mean sea level pressure, in tenths of a hectopascal, or for stations in mountainous regions monthly mean geopotential, in standard geopotential metres
+7		--		G1		--		GROUP1
+8		--		sn		--		Sign of the data, and relative humidity indicator
+9		--		T		--		Monthly mean air temperature, in tenths of a degree Celsius, its sign being given by sn
+10		--		st		--		Standard deviation of daily mean values relative to the monthly mean air temperature, in tenths of a degree Celsius
+11		--		G1		--		GROUP1
+12		--		sn		--		Sign of the data, and relative humidity indicator
+13		--		Tx		--		Mean daily maximum air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+14		--		sn		--		Sign of the data, and relative humidity indicator
+15		--		Tn		--		Mean daily minimum air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+16		--		G1		--		GROUP1
+17		--		e		--		Mean vapour pressure for the month, in tenths of a hectopascal
+18		--		G1		--		GROUP1
+19		--		R1		--		Total precipitation for the month
+20		--		Rd		--		Frequency group within which R1R1R1R1 falls
+21		--		nr		--		Number of days in the month with precipitation equal to or greater than 1 millimetre
+22		--		G1		--		GROUP1
+23		--		S1		--		Total sunshine for the month to the nearest hour
+24		--		ps		--		Percentage of total sunshine duration relative to the normal
+25		--		G1		--		GROUP1
+26		--		mp		--		Number of days missing from the records for pressure
+27		--		mT		--		Number of days missing from the records for air temperature
+28		--		mTx		--		Number of days missing from the record for daily maximum air temperature
+29		--		mTn		--		Number of days missing from the record for daily minimum air temperature
+30		--		G1		--		GROUP1
+31		--		me		--		Number of days missing from the records for vapour pressure
+32		--		mR		--		Number of days missing from the records for precipitation
+33		--		mS		--		Number of days missing from the records for sunshine duration
+
+---------------------------------- GROUP 2 ----------------------------------
+34		--		G2		--      GROUP2
+35		--		Yb		--		Year of beginning of the reference period
+36		--		Yc		--		Year of ending of the reference period
+37		--		G2		--		GROUP2
+38		--		Po		--		Monthly mean pressure at station level, in tenths of a hectopascal
+39		--		G2		--		G2
 40		--		P		--			
 41		--		G2		--			
 42		--		sn		--			
