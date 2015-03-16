@@ -81,8 +81,6 @@ public class DBImportUtils {
                 if( !dbRecordExists(dbTable, fields, values) ) {
                     String query = "insert into " + mySQLConfig.getDB() + "." + dbTable + " (station_id, station_name, latitude, longitude, elevation, country_name) values (?, ?, ?, ?, ?, ?)";
                     preparedStatement = connection.prepareStatement(query);
-
-                    preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setString(1, station_id);
                     preparedStatement.setString(2, station_name);
                     preparedStatement.setString(3, latitude);
@@ -92,7 +90,7 @@ public class DBImportUtils {
                     preparedStatement.execute();
 
                     System.out.print("\r" + i + " lines of " + lineCount + " processed.");
-                    //if(i>2) { break;}
+                    if(i>2) { break;}
                     i++;
                 }
             }
