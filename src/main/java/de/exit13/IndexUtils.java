@@ -1,6 +1,6 @@
 package de.exit13;
 
-import de.exit13.utils.Configuration.Config;
+import de.exit13.utils.configuration.Config;
 import de.exit13.utils.FileUtils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;

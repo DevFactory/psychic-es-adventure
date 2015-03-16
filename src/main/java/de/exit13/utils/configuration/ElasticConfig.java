@@ -1,4 +1,9 @@
-package de.exit13.utils.Configuration;
+package de.exit13.utils.configuration;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * Created by dude on 16.03.15.

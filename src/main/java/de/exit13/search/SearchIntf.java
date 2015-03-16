@@ -8,6 +8,10 @@ import org.elasticsearch.action.search.SearchResponse;
 public interface SearchIntf {
 
     SearchResponse query();
+    // dealing with mapping
+    void createMapping();
+    void readMapping();
+
 
     // dealing with indices
     void createIndex(String name, String type, String mapping);

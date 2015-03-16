@@ -1,6 +1,6 @@
 package de.exit13;
 
-import de.exit13.utils.Configuration.Config;
+import de.exit13.utils.configuration.Config;
 import de.exit13.utils.Initializer;
 
 /**

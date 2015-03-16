@@ -1,7 +1,7 @@
 package de.exit13;
 
 
-import de.exit13.utils.Configuration.Config;
+import de.exit13.utils.configuration.Config;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;

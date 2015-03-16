@@ -1,23 +1,21 @@
 package de.exit13.utils;
 
 import de.exit13.search.ElasticImpl;
-import de.exit13.utils.Configuration.Config;
-import de.exit13.utils.Configuration.ElasticConfig;
+import de.exit13.utils.configuration.Config;
+import de.exit13.utils.configuration.ElasticConfig;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
-import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
 /**
  * Created by dude on 13.03.15.
  */
-public class ESImportUtils {
+public class ElasticImportUtils {
     ElasticConfig elasticConfig = new ElasticConfig();
     ElasticImpl elastic = new ElasticImpl();
 

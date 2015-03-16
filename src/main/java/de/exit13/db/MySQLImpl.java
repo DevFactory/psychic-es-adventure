@@ -1,6 +1,6 @@
 package de.exit13.db;
 
-import de.exit13.utils.Configuration.MySQLConfig;
+import de.exit13.utils.configuration.MySQLConfig;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,10 +1,8 @@
 package de.exit13.utils;
 
 import de.exit13.db.MySQLImpl;
-import de.exit13.utils.Configuration.Config;
-import de.exit13.utils.Configuration.MySQLConfig;
-
-import java.sql.Connection;
+import de.exit13.utils.configuration.Config;
+import de.exit13.utils.configuration.MySQLConfig;
 
 /**
  * Created by elshotodore on 12.03.15.
@@ -27,7 +25,7 @@ public class Initializer {
         if(initialSetup == true) {
             DBImportUtils dbImportUtils = new DBImportUtils();
             dbImportUtils.mysqlImport();
-            //ESImportUtils esImportUtils = new ESImportUtils();
+            //ElasticImportUtils esImportUtils = new ElasticImportUtils();
             //esImportUtils.elasticImport();
         }
 

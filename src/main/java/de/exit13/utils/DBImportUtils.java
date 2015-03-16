@@ -1,8 +1,8 @@
 package de.exit13.utils;
 
 import de.exit13.db.MySQLImpl;
-import de.exit13.utils.Configuration.Config;
-import de.exit13.utils.Configuration.MySQLConfig;
+import de.exit13.utils.configuration.Config;
+import de.exit13.utils.configuration.MySQLConfig;
 
 import java.io.IOException;
 import java.sql.*;
@@ -62,7 +62,7 @@ public class DBImportUtils {
                 station_name = pieces[1].trim();
                 if(station_name.equals("")) { station_name = "N/A";}
 
-                latitude = pieces[2].trim().replace(" ","");
+                latitude = pieces[2].trim().replace(" ", "");
                 if(latitude.equals("")) { latitude = "-9999";}
 
                 longitude = pieces[3].trim().replace(" ","");

@@ -1,4 +1,4 @@
-package de.exit13.utils.Configuration;
+package de.exit13.utils.configuration;
 
 /**
  * Created by elshotodore on 18.02.2015.
