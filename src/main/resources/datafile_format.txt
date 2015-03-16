@@ -1,6 +1,7 @@
 0		--		year	--      year
 1		--		month	--      month of year
 2		--		IIiii	--      station id (wmo)
+
 ---------------------------------- GROUP 1 ----------------------------------
 3		--		G1		--      GROUP1
 4		--		Po		--      Monthly mean pressure at station level, in tenths of a hectopascal
@@ -40,91 +41,95 @@
 36		--		Yc		--		Year of ending of the reference period
 37		--		G2		--		GROUP2
 38		--		Po		--		Monthly mean pressure at station level, in tenths of a hectopascal
-39		--		G2		--		G2
-40		--		P		--			
-41		--		G2		--			
-42		--		sn		--			
-43		--		T		--			
-44		--		st		--			
-45		--		G2		--			
-46		--		sn		--			
-47		--		Tx		--			
-48		--		sn		--			
-49		--		Tn		--			
-50		--		G2		--			
-51		--		e		--			
-52		--		G2		--			
-53		--		R1		--			
-54		--		nr		--			
-55		--		G2		--			
-56		--		S1		--			
-57		--		G2		--			
-58		--		YP		--			
-59		--		YT		--			
-60		--		YTx		--			
-61		--		G2		--			
-62		--		Ye		--			
-63		--		YR		--			
-64		--		YS		--			
-65		--		G3		--			
-66		--		T25		--			
-67		--		T30		--			
-68		--		G3		--			
-69		--		T35		--			
-70		--		T40		--			
-71		--		G3		--			
-72		--		Tn0		--			
-73		--		Tx0		--			
-74		--		G3		--			
-75		--		R01		--			
-76		--		R05		--			
-77		--		G3		--			
-78		--		R10		--			
-79		--		R50		--			
-80		--		G3		--			
-81		--		R100	--
-82		--		R150	--
-83		--		G3		--			
-84		--		s00		--			
-85		--		s01		--			
-86		--		G3		--			
-87		--		s10		--			
-88		--		s50		--			
-89		--		G3		--			
-90		--		f10		--			
-91		--		f20		--			
-92		--		f30		--			
-93		--		G3		--			
-94		--		V1		--			
-95		--		V2		--			
-96		--		V3		--			
-97		--		G4		--			
-98		--		sn		--			
-99		--		Txd		--			
-100		--		yx		--			
-101		--		G4		--			
-102		--		sn		--			
-103		--		Tnd		--			
-104		--		yn		--			
-105		--		G4		--			
-106		--		sn		--			
-107		--		Tax		--			
-108		--		yax		--			
-109		--		G4		--			
-110		--		sn		--			
-111		--		Tan		--			
-112		--		yan		--			
-113		--		G4		--			
-114		--		Rx		--			
-115		--		yr		--			
-116		--		G4		--			
-117		--		iw		--			
-118		--		fx		--			
-119		--		yfx		--			
-120		--		G4		--			
-121		--		Dts		--			
-122		--		Dgr		--			
-123		--		G4		--			
-124		--		iy		--			
-125		--		Gx		--			
-126		--		Gn		--
+39		--		G2		--		GROUP2
+40		--		P		--		Monthly mean pressure, in tenths of a hectopascal or for stations in mountainous regions monthly mean geopotential, in standard geopotential metres
+41		--		G2		--      GROUP2
+42		--		sn		--		Sign of the data, and relative humidity indicator
+43		--		T		--		Monthly mean air temperature, in tenths of a degree Celsius, its sign being given by sn
+44		--		st		--		Standard deviation of daily mean values relative to the monthly mean air temperature, in tenths of a degree Celsius
+45		--		G2		--		GROUP2
+46		--		sn		--		Sign of the data, and relative humidity indicator
+47		--		Tx		--		Mean daily maximum air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+48		--		sn		--		Sign of the data, and relative humidity indicator
+49		--		Tn		--		Mean daily minimum air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+50		--		G2		--		GROUP2
+51		--		e		--		Mean vapour pressure for the month, in tenths of a hectopascal
+52		--		G2		--		GROUP2
+53		--		R1		--		Total precipitation for the month
+54		--		nr		--		Number of days in the month with precipitation equal to or greater than 1 millimetre
+55		--		G2		--		GROUP2
+56		--		S1		--		Total sunshine for the month to the nearest hour
+57		--		G2		--		GROUP2
+58		--		YP		--		Number of missing years within the reference period from the calculation of pressure normal
+59		--		YT		--		Number of missing years within the reference period from the calculation of normal for mean air temperature
+60		--		YTx		--		Number of missing years within the reference period from the calculation of normal for mean extreme air temperature
+61		--		G2		--		GROUP2
+62		--		Ye		--		Number of missing years within the reference period from the calculation of vapour pressure normal
+63		--		YR		--		Number of missing years within the reference period from the calculation of normal for precipitation
+64		--		YS		--		Number of missing years within the reference period from the calculation of normal for sunshine duration
+
+---------------------------------- GROUP 3 ----------------------------------
+65		--		G3		--      GROUP3
+66		--		T25		--		Number of days in the month with maximum air temperature equal to or more than 25°C
+67		--		T30		--		Number of days in the month with maximum air temperature equal to or more than 30°C
+68		--		G3		--      GROUP3
+69		--		T35		--		Number of days in the month with maximum air temperature equal to or more than 35°C
+70		--		T40		--		Number of days in the month with maximum air temperature equal to or more than 40°C
+71		--		G3		--      GROUP3
+72		--		Tn0		--		Number of days in the month with minimum air temperature less than 0°C
+73		--		Tx0		--		Number of days in the month with maximum air temperature less than 0°C
+74		--		G3		--      GROUP3
+75		--		R01		--		Number of days in the month with precipitation equal to or more than 1.0 mm
+76		--		R05		--		Number of days in the month with precipitation equal to or more than 5.0 mm
+77		--		G3		--      GROUP3
+78		--		R10		--		Number of days in the month with precipitation equal to or more than 10.0 mm
+79		--		R50		--		Number of days in the month with precipitation equal to or more than 50.0 mm
+80		--		G3		--      GROUP3
+81		--		R100	--      Number of days in the month with precipitation equal to or more than 100.0 mm
+82		--		R150	--      Number of days in the month with precipitation equal to or more than 150.0 mm
+83		--		G3		--      GROUP3
+84		--		s00		--		Number of days in the month with snow depth more than 0 cm
+85		--		s01		--		Number of days in the month with snow depth more than 1 cm
+86		--		G3		--      GROUP3
+87		--		s10		--		Number of days in the month with snow depth more than 10 cm
+88		--		s50		--		Number of days in the month with snow depth more than 50 cm
+89		--		G3		--      GROUP3
+90		--		f10		--		Number of days in the month with observed or recorded wind speed equal to or more than 10 metres per second or 20 knots
+91		--		f20		--		Number of days in the month with observed or recorded wind speed equal to or more than 20 metres per second or 40 knots
+92		--		f30		--		Number of days in the month with observed or recorded wind speed equal to or more than 30 metres per second or 60 knots
+93		--		G3		--      GROUP3
+94		--		V1		--		Number of days in the month with observed or recorded visibility less than 50 m, irrespective of the duration of the observational period
+95		--		V2		--		Number of days in the month with observed or recorded visibility less than 100 m, irrespective of the duration of the observational period
+96		--		V3		--		Number of days in the month with observed or recorded visibility less than 1000 m, irrespective of the duration of the observational period
+
+---------------------------------- GROUP 4 ----------------------------------
+97		--		G4		--      GROUP4
+98		--		sn		--		Sign of the data, and relative humidity indicator
+99		--		Txd		--		Highest daily mean air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+100		--		yx		--		Day of highest daily mean air temperature during the month
+101		--		G4		--		GROUP4
+102		--		sn		--		Sign of the data, and relative humidity indicator
+103		--		Tnd		--		Lowest daily mean air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+104		--		yn		--		Day of lowest daily mean air temperature during the month
+105		--		G4		--		GROUP4
+106		--		sn		--		Sign of the data, and relative humidity indicator
+107		--		Tax		--		Highest air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+108		--		yax		--		Day of highest air temperature during the month
+109		--		G4		--		GROUP4
+110		--		sn		--		Sign of the data, and relative humidity indicator
+111		--		Tan		--		Lowest air temperature of the month, in tenths of a degree Celsius, its sign being given by sn
+112		--		yan		--		Day of lowest air temperature during the month
+113		--		G4		--		GROUP4
+114		--		Rx		--		Highest daily amount of precipitation during the month, in tenths of a millimetre
+115		--		yr		--		Day of highest daily amount of precipitation during the month
+116		--		G4		--		GROUP4
+117		--		iw		--		Indicator for source and units of wind speed
+118		--		fx		--		Highest gust wind speed observed or recorded during the month, in tenths of units indicated by iw
+119		--		yfx		--		Day of highest observed or recorded wind speed during the month
+120		--		G4		--		GROUP4
+121		--		Dts		--		Number of days in the month with thunderstorm(s)
+122		--		Dgr		--		Number of days in the month with hail.
+123		--		G4		Principal time of daily reading in UTC (hours) of maximum extreme temperature--		GROUP4
+124		--		iy		--		Indicator to specify type of reading
+125		--		Gx		--		Principal time of daily reading in UTC (hours) of minimum extreme temperature
+126		--		Gn		--      Principal time of daily reading in UTC (hours) of maximum extreme temperature
