@@ -129,7 +129,7 @@
 120		--		G4		--		GROUP4
 121		--		Dts		--		Number of days in the month with thunderstorm(s)
 122		--		Dgr		--		Number of days in the month with hail.
-123		--		G4		Principal time of daily reading in UTC (hours) of maximum extreme temperature--		GROUP4
+123		--		G4		--		GROUP4
 124		--		iy		--		Indicator to specify type of reading
 125		--		Gx		--		Principal time of daily reading in UTC (hours) of minimum extreme temperature
 126		--		Gn		--      Principal time of daily reading in UTC (hours) of maximum extreme temperature

@@ -53,17 +53,28 @@ public class DBImportUtils {
             for(String line : fileContent) {
                 //WMO-Station ID; StationName;                               Latitude;  Longitude;       ;        ;Country
 
-                String[] pieces = line.split(";");
+                String[] pieces = line.split(";",-1);
                 int piecesNumber = pieces.length;
+
                 station_id = pieces[0].trim();
+                if(station_id.equals("")) { station_id = "-9999";}
+
                 station_name = pieces[1].trim();
+                if(station_name.equals("")) { station_name = "N/A";}
+
                 latitude = pieces[2].trim().replace(" ","");
+                if(latitude.equals("")) { latitude = "-9999";}
+
                 longitude = pieces[3].trim().replace(" ","");
+                if(longitude.equals("")) { longitude = "-9999";}
+
                 elevation = pieces[4].trim();
                 if(elevation.equals("")) { elevation = "-9999";}
-                // 5 is some strange duplicate of 4
-                country_name = pieces[6].trim();
 
+                // 5 is some duplicate of 4, so skip it???
+
+                country_name = pieces[6].trim();
+                if(country_name.equals("")) { country_name = "N/A";}
 
                 String fields[] = new String[] {"station_id", "station_name", "latitude", "longitude", "elevation", "country_name" };
                 String values[] = new String[] {station_id, station_name, latitude, longitude, elevation, country_name };

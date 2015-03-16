@@ -5,7 +5,7 @@ import org.elasticsearch.action.search.SearchResponse;
 /**
  * Created by elshotodore on 12.03.15.
  */
-public class ElasticSearchImpl implements SearchIntf{
+public class ElasticImpl implements SearchIntf{
 
     @Override
     public SearchResponse query() {
@@ -13,7 +13,7 @@ public class ElasticSearchImpl implements SearchIntf{
     }
 
     @Override
-    public void createIndex(String name, String type) {
+    public void createIndex(String name, String type, String mapping) {
 
     }
 

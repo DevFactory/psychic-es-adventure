@@ -10,7 +10,7 @@ public interface SearchIntf {
     SearchResponse query();
 
     // dealing with indices
-    void createIndex(String name, String type);
+    void createIndex(String name, String type, String mapping);
     void deleteIndex(String name);
     void openIndex(String name);
     void closeIndex(String name);

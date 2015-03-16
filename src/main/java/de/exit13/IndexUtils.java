@@ -171,7 +171,7 @@ public class IndexUtils {
             int i = 1;
             System.out.println("File: " + Config.ANSI_RED_FG + gzipFile.getName() + Config.ANSI_RESET);
             while ((line = bufferedReader.readLine()) != null) {
-                jsonLine = fileUtils.convertLineToJson(line.toString()).toJSONString();
+                //jsonLine = fileUtils.convertLineToJson(line.toString()).toJSONString();
                 bulkProcessor.add(createIndexRequest(jsonLine, indexName, indexType));
                 if(i % 50000 == 0) {
                     System.out.print("processed " + Config.ANSI_RED_FG +  i + Config.ANSI_RESET + " lines...\r");

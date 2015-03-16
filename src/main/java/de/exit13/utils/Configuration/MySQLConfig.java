@@ -4,10 +4,10 @@ package de.exit13.utils.Configuration;
  * Created by elshotodore on 12.03.15.
  */
 public class MySQLConfig {
-    public String DB_USER = "sqluser";
-    public String DB_PASSWORD = "sqluserpw";
-    public String DB_SERVER = "localhost";
-    public String DB = "climatedata";
+    public static String DB_USER = "sqluser";
+    public static String DB_PASSWORD = "sqluserpw";
+    public static String DB_SERVER = "localhost";
+    public static String DB = "climatedata";
 
     public MySQLConfig() {
         new MySQLConfig(DB_USER, DB_PASSWORD, DB_SERVER, DB);
