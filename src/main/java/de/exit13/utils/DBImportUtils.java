@@ -22,8 +22,8 @@ public class DBImportUtils {
 
     public String mysqlImport( ) {
         connection = mysql.openConnection(mySQLConfig.getDB_USER(), mySQLConfig.getDB_PASSWORD(), mySQLConfig.getDB_SERVER(), mySQLConfig.getDB());
-        String dbTable = "weatherstations_WMO";
-        String fileName = "/data/rawdata/CLIMAT/aaa_stations_list_CLIMAT_data.txt";
+        String dbTable = "weatherstations";
+        String fileName = "/data/rawdata/CLIMAT/_stations_list_CLIMAT_data.txt";
 
         importStations(dbTable, fileName);
         return "";

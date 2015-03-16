@@ -1,16 +1,10 @@
-DROP TABLE tt;
-CREATE TABLE tt (id INT NOT NULL AUTO_INCREMENT,
--- wmo_station_id
-  field VARCHAR(255),
-  PRIMARY KEY (id));
-
--- DROP TABLE weatherstations_WMO;
-CREATE TABLE weatherstations_WMO (id INT NOT NULL AUTO_INCREMENT,
+DROP TABLE weatherstations;
+CREATE TABLE weatherstations (id INT NOT NULL AUTO_INCREMENT,
   -- wmo_station_id
-  station_id VARCHAR(6),
+  station_id VARCHAR(15),
   station_name VARCHAR(255),
   latitude VARCHAR(15),
-  longfrom_date VARCHAR(8),
+  longitude VARCHAR(15),
 -- to_date VARCHAR(8),
 -- state VARCHAR(255),
 -- itude VARCHAR(15),

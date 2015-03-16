@@ -42,9 +42,9 @@ public class ESImportUtils {
     private void processFileContent(ArrayList<String> fileContent) {
         int i = 0;
         for(String line : fileContent ){
-            if(i++ > 0 && i == 1006) {
+            //if(i++ > 0 && i == 1006) {
                 convertLineToJson(line);
-            }
+            //}
         }
     }
 
@@ -53,7 +53,7 @@ public class ESImportUtils {
         String[] pieces = line.split(";",-1);
         Map<String, Object> mapping = new HashMap<String, Object>();
         for(int i=0; i< pieces.length; i++) {
-            // set all the zero value pieces to n/a
+            // set all the zero value pieces to -9999
             if (pieces[i].equals("")) {
                 pieces[i] = "-9999";
             }
@@ -61,7 +61,7 @@ public class ESImportUtils {
             mapping.put("year", parseInt(pieces[0]));
             mapping.put("month", parseInt(pieces[1]));
             mapping.put("station_id", pieces[2]);
-            System.out.println(i + " --- " +parseInt(pieces[i]));
+            System.out.println(i + " --- " + parseInt(pieces[i]));
         }
         JSONObject jsonObject = new JSONObject();
         return jsonObject;
