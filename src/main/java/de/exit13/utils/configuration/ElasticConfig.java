@@ -18,14 +18,14 @@ public class ElasticConfig {
     public static String ES_SERVER_PORT = "9300";
     public static String ES_CLUSTER_NAME = "elasticsearch";
 
-    public static Map<String, List<String>>  mappingFieldsDefinition = new HashMap<>();
+    public static List<List<String>>  mappingFieldsDefinition = new ArrayList<List<String>>();
 
     public ElasticConfig() {
         new ElasticConfig(ES_INDEX_NAME, ES_INDEX_TYPE, ES_SERVER_NAME, ES_SERVER_PORT, ES_CLUSTER_NAME);
         // field name, type, index, store, doc_values
-        String settings = null;
+        List<String> settings = null;
 
-        mappingFieldsDefinition.put("year", settings);
+        mappingFieldsDefinition.add(settings);
     }
 
     public ElasticConfig(String ES_INDEX_NAME, String ES_INDEX_TYPE, String ES_SERVER_NAME, String ES_SERVER_PORT, String ES_CLUSTER_NAME) {
