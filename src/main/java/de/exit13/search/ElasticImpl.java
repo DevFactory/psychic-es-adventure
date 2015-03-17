@@ -25,19 +25,21 @@ public class ElasticImpl implements SearchIntf{
                     .startObject()
                         .startObject("r")
                             .startObject("_all")
-                                .field("enabled", "false")
+                                .field("enabled", "true")
                             .endObject()
                             .startObject("_source")
-                                .field("enabled", "false")
+                                .field("enabled", "true")
                             .endObject()
-                            .startObject("properties")
-                                .startObject("date")
+                            .startObject("properties");
+                // for loop for all the fields
+                            mapping.startObject("date")
                                     .field("type", "integer")
                                     .field("index", "not_analyzed")
                                     .field("store", false)
                                     .field("doc_values", true)
-                                .endObject()
-                            .endObject()
+                                .endObject();
+                // end of loop
+                           mapping.endObject()
                         .endObject()
                     .endObject();
         } catch (IOException e) {

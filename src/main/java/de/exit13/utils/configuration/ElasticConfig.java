@@ -1,6 +1,8 @@
 package de.exit13.utils.configuration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.lang.Integer.parseInt;
@@ -16,8 +18,14 @@ public class ElasticConfig {
     public static String ES_SERVER_PORT = "9300";
     public static String ES_CLUSTER_NAME = "elasticsearch";
 
+    public static Map<String, List<String>>  mappingFieldsDefinition = new HashMap<>();
+
     public ElasticConfig() {
         new ElasticConfig(ES_INDEX_NAME, ES_INDEX_TYPE, ES_SERVER_NAME, ES_SERVER_PORT, ES_CLUSTER_NAME);
+        // field name, type, index, store, doc_values
+        String settings = null;
+
+        mappingFieldsDefinition.put("year", settings);
     }
 
     public ElasticConfig(String ES_INDEX_NAME, String ES_INDEX_TYPE, String ES_SERVER_NAME, String ES_SERVER_PORT, String ES_CLUSTER_NAME) {
