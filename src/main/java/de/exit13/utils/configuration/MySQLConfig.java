@@ -14,10 +14,10 @@ public class MySQLConfig {
     }
 
     public MySQLConfig(String DB_USER, String DB_PASSWORD, String DB_SERVER, String DB) {
-        this.DB_USER = DB_USER;
-        this.DB_PASSWORD = DB_PASSWORD;
-        this.DB_SERVER = DB_SERVER;
-        this.DB = DB;
+        MySQLConfig.DB_USER = DB_USER;
+        MySQLConfig.DB_PASSWORD = DB_PASSWORD;
+        MySQLConfig.DB_SERVER = DB_SERVER;
+        MySQLConfig.DB = DB;
     }
 
     public String getDB_USER() {
@@ -25,7 +25,7 @@ public class MySQLConfig {
     }
 
     public void setDB_USER(String DB_USER) {
-        this.DB_USER = DB_USER;
+        MySQLConfig.DB_USER = DB_USER;
     }
 
     public String getDB_PASSWORD() {
@@ -33,7 +33,7 @@ public class MySQLConfig {
     }
 
     public void setDB_PASSWORD(String DB_PASSWORD) {
-        this.DB_PASSWORD = DB_PASSWORD;
+        MySQLConfig.DB_PASSWORD = DB_PASSWORD;
     }
 
     public String getDB_SERVER() {
@@ -41,7 +41,7 @@ public class MySQLConfig {
     }
 
     public void setDB_SERVER(String DB_SERVER) {
-        this.DB_SERVER = DB_SERVER;
+        MySQLConfig.DB_SERVER = DB_SERVER;
     }
 
     public String getDB() {
@@ -49,6 +49,6 @@ public class MySQLConfig {
     }
 
     public void setDB(String DB) {
-        this.DB = DB;
+        MySQLConfig.DB = DB;
     }
 }

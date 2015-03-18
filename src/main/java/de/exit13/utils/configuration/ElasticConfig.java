@@ -32,12 +32,12 @@ public class ElasticConfig {
     }
 
     public ElasticConfig(String ES_INDEX_NAME, String ES_INDEX_TYPE, String ES_SERVER_NAME, String ES_SERVER_PORT, String ES_CLUSTER_NAME) {
-        this.ES_INDEX_NAME = ES_INDEX_NAME;
-        this.ES_INDEX_TYPE = ES_INDEX_TYPE;
-        this.ES_SERVER_NAME = ES_SERVER_NAME;
-        this.ES_SERVER_PORT = ES_SERVER_PORT;
-        this.ES_CLUSTER_NAME = ES_CLUSTER_NAME;
-        this.MAPPING_FIELDS_DEFINITION = this.getMappingFieldsDefinition();
+        ElasticConfig.ES_INDEX_NAME = ES_INDEX_NAME;
+        ElasticConfig.ES_INDEX_TYPE = ES_INDEX_TYPE;
+        ElasticConfig.ES_SERVER_NAME = ES_SERVER_NAME;
+        ElasticConfig.ES_SERVER_PORT = ES_SERVER_PORT;
+        ElasticConfig.ES_CLUSTER_NAME = ES_CLUSTER_NAME;
+        MAPPING_FIELDS_DEFINITION = getMappingFieldsDefinition();
     }
 
     public Client getClient() {
@@ -71,15 +71,13 @@ public class ElasticConfig {
                     String index = mappingFieldsDefinition.get(key).get("index");
                     String store = mappingFieldsDefinition.get(key).get("store");
                     String docValues = mappingFieldsDefinition.get(key).get("doc_values");
-                }
-
-        /*
-                    mapping.startObject("date")
-                        .field("type", "integer")
-                        .field("index", "not_analyzed")
-                        .field("store", false)
-                        .field("doc_values", true)
-                    .endObject();*/
+                    mapping.startObject(key)
+                        .field("type", type)
+                        .field("index", index)
+                        .field("store", store)
+                        .field("doc_values", docValues)
+                    .endObject();
+            }
             // end of loop
             mapping.endObject()
                     .endObject()
@@ -93,7 +91,7 @@ public class ElasticConfig {
 
     public static Map<String, Map<String, String>> getMappingFieldsDefinition() {
         // field name, type, index, store, doc_values
-        String key = "";
+        String key;
         Map<String, String> settings = new HashMap<>();
         settings.put("type", "integer");
         settings.put("index", "not_analyzed");
@@ -105,6 +103,7 @@ public class ElasticConfig {
         MAPPING_FIELDS_DEFINITION.put(key, settings);
         key = "station_id";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
+        
         return MAPPING_FIELDS_DEFINITION;
     }
 
