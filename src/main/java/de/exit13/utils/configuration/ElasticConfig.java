@@ -9,9 +9,8 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 
 import java.io.IOException;
-import java.util.*;
-
-import static java.lang.Integer.parseInt;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by dude on 16.03.15.
@@ -97,13 +96,16 @@ public class ElasticConfig {
         settings.put("index", "not_analyzed");
         settings.put("store", "false");
         settings.put("doc_values", "true");
+
         key = "year";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
+
         key = "month";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
+
         key = "station_id";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
-        
+
         return MAPPING_FIELDS_DEFINITION;
     }
 
