@@ -1,3 +1,7 @@
+sn => 0, positive
+sn => 1, negative
+sn => 9, relative humidity follows
+
 0		--		year	--      year
 1		--		month	--      month of year
 2		--		IIiii	--      station id (wmo)
