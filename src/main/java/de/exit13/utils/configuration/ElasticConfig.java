@@ -64,8 +64,9 @@ public class ElasticConfig {
                     .endObject()
                     .startObject("properties");
             // for loop for all the fields
+            int i = 0;
             for ( String key : mappingFieldsDefinition.keySet() ) {
-                   System.out.println( key + mappingFieldsDefinition.get(key) );
+                    System.out.println( key + mappingFieldsDefinition.get(key) );
                     String type = mappingFieldsDefinition.get(key).get("type");
                     String index = mappingFieldsDefinition.get(key).get("index");
                     String store = mappingFieldsDefinition.get(key).get("store");
@@ -76,6 +77,7 @@ public class ElasticConfig {
                         .field("store", store)
                         .field("doc_values", docValues)
                     .endObject();
+                System.out.println(i++);
             }
             // end of loop
             mapping.endObject()
@@ -97,14 +99,65 @@ public class ElasticConfig {
         settings.put("store", "false");
         settings.put("doc_values", "true");
 
+        // 0
         key = "year";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
-
+        // 1
         key = "month";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
-
+        // 2
         key = "station_id";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 4
+        key = "mean_monthly_station_level_pressure";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 8 + 9
+        key = "mean_monthly_air_temp";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 19
+        key = "total_monthly_precipitation";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 21
+        key = "number_of_days_with_precipitation";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 23
+        key = "total_monthly_sunshine";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 66
+        key = "days_with_max_temp_gt_25";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 67
+        key = "days_with_max_temp_gt_30";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 69
+        key = "days_with_max_temp_gt_35";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 70
+        key = "days_with_max_temp_gt_40";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 72
+        key = "days_with_min_temp_lt_0";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 73
+        key = "days_with_max_temp_lt_0";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+
+        // 106 + 107
+        key = "max_temp_per_month";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 111
+        key = "min_temp_per_month";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 118
+        key = "max_gust_wind_speed_per_month";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 121
+        key = "number_of_days_with_thunderstorms";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        // 122
+        key = "number_of_days_with_hail";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+
 
         return MAPPING_FIELDS_DEFINITION;
     }

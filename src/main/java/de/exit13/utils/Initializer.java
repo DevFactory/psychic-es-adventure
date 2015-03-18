@@ -31,8 +31,8 @@ public class Initializer {
             ElasticImpl elastic = new ElasticImpl();
 
             XContentBuilder mapping = ElasticConfig.createMapping (ElasticConfig.getMappingFieldsDefinition());
-            elastic.deleteIndex("testindex");
-            elastic.createIndex("testindex", mapping);
+            elastic.deleteIndex("testindex2");
+            elastic.createIndex("testindex2", mapping);
 
             ElasticImportUtils elasticImportUtils = new ElasticImportUtils();
             //elasticImportUtils.elasticImport();
