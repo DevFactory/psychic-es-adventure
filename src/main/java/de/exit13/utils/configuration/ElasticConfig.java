@@ -1,9 +1,15 @@
 package de.exit13.utils.configuration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentFactory;
+
+import java.io.IOException;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
@@ -11,21 +17,18 @@ import static java.lang.Integer.parseInt;
  * Created by dude on 16.03.15.
  */
 public class ElasticConfig {
-    public static String ES_INDEX_NAME = "climat_monthly";
+    private Client client;
+    public static String ES_INDEX_NAME = "climate";
     public static String ES_INDEX_TYPE = "r";
 
     public static String ES_SERVER_NAME = "localhost";
     public static String ES_SERVER_PORT = "9300";
     public static String ES_CLUSTER_NAME = "elasticsearch";
 
-    public static List<List<String>>  mappingFieldsDefinition = new ArrayList<List<String>>();
+    public static Map<String, Map<String, String>> MAPPING_FIELDS_DEFINITION = new HashMap<>();
 
     public ElasticConfig() {
         new ElasticConfig(ES_INDEX_NAME, ES_INDEX_TYPE, ES_SERVER_NAME, ES_SERVER_PORT, ES_CLUSTER_NAME);
-        // field name, type, index, store, doc_values
-        List<String> settings = null;
-
-        mappingFieldsDefinition.add(settings);
     }
 
     public ElasticConfig(String ES_INDEX_NAME, String ES_INDEX_TYPE, String ES_SERVER_NAME, String ES_SERVER_PORT, String ES_CLUSTER_NAME) {
@@ -34,6 +37,75 @@ public class ElasticConfig {
         this.ES_SERVER_NAME = ES_SERVER_NAME;
         this.ES_SERVER_PORT = ES_SERVER_PORT;
         this.ES_CLUSTER_NAME = ES_CLUSTER_NAME;
+        this.MAPPING_FIELDS_DEFINITION = this.getMappingFieldsDefinition();
+    }
+
+    public Client getClient() {
+        Settings indexSettings = ImmutableSettings.settingsBuilder().put("cluster.name", Config.CLUSTER_NAME).put("client.transport.sniff", true).build();
+        client = new TransportClient(indexSettings).addTransportAddress(new InetSocketTransportAddress(Config.SERVER_ADDRESS, Config.SERVER_PORT));
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public static XContentBuilder createMapping(Map<String, Map<String, String>> mappingFieldsDefinition) {
+        XContentBuilder mapping =
+                null;
+        try {
+            mapping = XContentFactory.jsonBuilder()
+                    .startObject()
+                    .startObject("r")
+                    .startObject("_all")
+                    .field("enabled", "true")
+                    .endObject()
+                    .startObject("_source")
+                    .field("enabled", "true")
+                    .endObject()
+                    .startObject("properties");
+            // for loop for all the fields
+            for ( String key : mappingFieldsDefinition.keySet() ) {
+                   System.out.println( key + mappingFieldsDefinition.get(key) );
+                    String type = mappingFieldsDefinition.get(key).get("type");
+                    String index = mappingFieldsDefinition.get(key).get("index");
+                    String store = mappingFieldsDefinition.get(key).get("store");
+                    String docValues = mappingFieldsDefinition.get(key).get("doc_values");
+                }
+
+        /*
+                    mapping.startObject("date")
+                        .field("type", "integer")
+                        .field("index", "not_analyzed")
+                        .field("store", false)
+                        .field("doc_values", true)
+                    .endObject();*/
+            // end of loop
+            mapping.endObject()
+                    .endObject()
+                    .endObject();
+            //mapping.humanReadable(true);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return mapping;
+    }
+
+    public static Map<String, Map<String, String>> getMappingFieldsDefinition() {
+        // field name, type, index, store, doc_values
+        String key = "";
+        Map<String, String> settings = new HashMap<>();
+        settings.put("type", "integer");
+        settings.put("index", "not_analyzed");
+        settings.put("store", "false");
+        settings.put("doc_values", "true");
+        key = "year";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        key = "month";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        key = "station_id";
+        MAPPING_FIELDS_DEFINITION.put(key, settings);
+        return MAPPING_FIELDS_DEFINITION;
     }
 
     public static String getEsIndexName() {

@@ -1,8 +1,11 @@
 package de.exit13.utils;
 
 import de.exit13.db.MySQLImpl;
+import de.exit13.search.ElasticImpl;
 import de.exit13.utils.configuration.Config;
+import de.exit13.utils.configuration.ElasticConfig;
 import de.exit13.utils.configuration.MySQLConfig;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 
 /**
  * Created by elshotodore on 12.03.15.
@@ -25,8 +28,16 @@ public class Initializer {
         if(initialSetup == true) {
             // DBImportUtils dbImportUtils = new DBImportUtils();
             // dbImportUtils.mysqlImport();
-            ElasticImportUtils esImportUtils = new ElasticImportUtils();
-            esImportUtils.elasticImport();
+            ElasticImpl elastic = new ElasticImpl();
+
+            XContentBuilder mapping = ElasticConfig.createMapping (ElasticConfig.getMappingFieldsDefinition());
+            elastic.deleteIndex("testindex");
+            elastic.createIndex("testindex", mapping);
+
+            ElasticImportUtils elasticImportUtils = new ElasticImportUtils();
+            //elasticImportUtils.elasticImport();
+
+
         }
 
         return status;
