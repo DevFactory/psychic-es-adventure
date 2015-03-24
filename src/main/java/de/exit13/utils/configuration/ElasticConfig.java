@@ -145,7 +145,7 @@ public class ElasticConfig {
         // 106 + 107
         key = "max_temp_per_month";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
-        // 111
+        // 111 + 112
         key = "min_temp_per_month";
         MAPPING_FIELDS_DEFINITION.put(key, settings);
         // 118

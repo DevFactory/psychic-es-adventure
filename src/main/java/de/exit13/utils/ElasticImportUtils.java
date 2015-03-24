@@ -43,7 +43,7 @@ public class ElasticImportUtils {
         FileUtils fu = new FileUtils();
 
         String directory = "/data/rawdata/CLIMAT";
-        String filter = "CLIMAT_RAW_2003.*.txt";
+        String filter = "CLIMAT_RAW_20.*.txt";
         ArrayList<String> fileList = fu.readDirectory(directory, filter);
         System.out.println("Read " + fileList.size() + " files from " + directory + ".");
 
@@ -77,21 +77,45 @@ public class ElasticImportUtils {
     private JSONObject convertLineToJson(String line) {
         String[] pieces = line.split(";",-1); // split preserving empty fields
         Map<String, Object> mapping = new HashMap<String, Object>();
+        int sign = +1;
         for(int i = 0; i< pieces.length; i++) {
             // set all the zero value pieces to -9999
             if (null == pieces[i] || pieces[i].isEmpty()) {
                 pieces[i] = "-9999";
             }
+            //pieces[i] = pieces[i].replace(" ", "");
         }
         // for a reference where the values come from -> see /resources/datafile_format.txt
         mapping.put("year", parseInt(pieces[0]));
         mapping.put("month", parseInt(pieces[1]));
         mapping.put("station_id", parseInt(pieces[2]));
         mapping.put("mean_monthly_station_level_pressure", parseInt(pieces[4]));
-        int sign = (parseInt(pieces[8]) > 0) ? -1: +1;
+
+        sign = (parseInt(pieces[8]) > 0) ? -1: +1;
         mapping.put("mean_monthly_air_temp", sign * parseInt(pieces[9]));
 
         mapping.put("total_monthly_precipitation", parseInt(pieces[19]));
+        mapping.put("number_of_days_with_precipitation", parseInt(pieces[21]));
+        mapping.put("total_monthly_sunshine", parseInt(pieces[23]));
+        mapping.put("days_with_max_temp_gt_25", parseInt(pieces[66]));
+        mapping.put("days_with_max_temp_gt_30", parseInt(pieces[67]));
+        mapping.put("days_with_max_temp_gt_35", parseInt(pieces[69]));
+        mapping.put("days_with_max_temp_gt_40", parseInt(pieces[70]));
+        mapping.put("days_with_min_temp_lt_0", parseInt(pieces[72]));
+        mapping.put("days_with_max_temp_lt_0", parseInt(pieces[73]));
+
+        sign = (parseInt(pieces[106]) > 0) ? -1: +1;
+        mapping.put("max_temp_per_month", sign * parseInt(pieces[107]));
+
+        sign = (parseInt(pieces[111]) > 0) ? -1: +1;
+        mapping.put("min_temp_per_month", sign * parseInt(pieces[112]));
+
+        mapping.put("max_gust_wind_speed_per_month", parseInt(pieces[118]));
+
+        mapping.put("number_of_days_with_thunderstorms", parseInt(pieces[121]));
+
+        mapping.put("number_of_days_with_hail", parseInt(pieces[122]));
+
         //System.out.println(i + " --- " + parseInt(pieces[i]));
         JSONObject jsonObject = new JSONObject();
         return jsonObject;
