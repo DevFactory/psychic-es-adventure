@@ -66,7 +66,7 @@ public class ElasticConfig {
             // for loop for all the fields
             int i = 0;
             for ( String key : mappingFieldsDefinition.keySet() ) {
-                    System.out.println( key + mappingFieldsDefinition.get(key) );
+                  //  System.out.println( key + mappingFieldsDefinition.get(key) );
                     String type = mappingFieldsDefinition.get(key).get("type");
                     String index = mappingFieldsDefinition.get(key).get("index");
                     String store = mappingFieldsDefinition.get(key).get("store");
@@ -77,7 +77,7 @@ public class ElasticConfig {
                         .field("store", store)
                         .field("doc_values", docValues)
                     .endObject();
-                System.out.println(i++);
+                //System.out.println(i++);
             }
             // end of loop
             mapping.endObject()
@@ -96,7 +96,7 @@ public class ElasticConfig {
         Map<String, String> settings = new HashMap<>();
         settings.put("type", "integer");
         settings.put("index", "not_analyzed");
-        settings.put("store", "false");
+        settings.put("store", "true");
         settings.put("doc_values", "true");
 
         // 0

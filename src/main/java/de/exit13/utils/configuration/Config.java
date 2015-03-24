@@ -12,9 +12,9 @@ public class Config {
     // indexing settings
     public static final String INDEX_NAME = "climatedata";
     public static final String INDEX_TYPE = "r"; // each doc is a record
-    public static final int BULK_ACTION_COUNT = 2222;
+    public static final int BULK_ACTION_COUNT = 50;
 
-    public static final String FILTER_EXPRESSION = "^produkt_klima_Tageswerte_.*.txt";
+    public static final String FILTER_EXPRESSION = "^CLIMAT_RAW_2003.*.txt";
     public static final String SRC_DATA_DIR = "/data/rawdata/";
     public static final int MAX_LINES_TO_PROCESS = 0; // set > 0 to break after XX processed lines
 
