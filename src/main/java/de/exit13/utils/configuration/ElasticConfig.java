@@ -57,7 +57,7 @@ public class ElasticConfig {
                     .startObject()
                     .startObject("r")
                     .startObject("_all")
-                    .field("enabled", "true")
+                    .field("enabled", "false")
                     .endObject()
                     .startObject("_source")
                     .field("enabled", "true")
@@ -69,12 +69,12 @@ public class ElasticConfig {
                   //  System.out.println( key + mappingFieldsDefinition.get(key) );
                     String type = mappingFieldsDefinition.get(key).get("type");
                     String index = mappingFieldsDefinition.get(key).get("index");
-                    String store = mappingFieldsDefinition.get(key).get("store");
-                    String docValues = mappingFieldsDefinition.get(key).get("doc_values");
+                    Boolean store = Boolean.parseBoolean(mappingFieldsDefinition.get(key).get("store"));
+                    Boolean docValues = Boolean.parseBoolean(mappingFieldsDefinition.get(key).get("doc_values"));
                     mapping.startObject(key)
                         .field("type", type)
                         .field("index", index)
-                        .field("store", store)
+                        .field("store", true)
                         .field("doc_values", docValues)
                     .endObject();
                 //System.out.println(i++);
@@ -97,7 +97,7 @@ public class ElasticConfig {
         settings.put("type", "integer");
         settings.put("index", "not_analyzed");
         settings.put("store", "true");
-        settings.put("doc_values", "true");
+        settings.put("doc_values", "false");
 
         // 0
         key = "year";

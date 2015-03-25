@@ -31,7 +31,8 @@ public class ElasticImportUtils {
     ElasticConfig elasticConfig = new ElasticConfig();
     Client client;
     ElasticImpl elastic = new ElasticImpl();
-
+    int failedLines = 0;
+    int totalLines = 0;
 
     public ElasticImportUtils() {
         Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name", Config.CLUSTER_NAME).put("client.transport.sniff", true).build();
@@ -53,8 +54,9 @@ public class ElasticImportUtils {
             processFileContent(fileContent);
 
         }
-
-        System.out.println(Config.ANSI_GREEN_FG + "Done!" + Config.ANSI_RESET);
+        System.out.println("Done!");
+        System.out.println(Config.ANSI_GREEN_FG + "Total lines: " + totalLines + Config.ANSI_RESET);
+        System.out.println( Config.ANSI_RED_FG +"Failed lines: " + failedLines + Config.ANSI_RESET);
     }
 
     private void processFileContent(ArrayList<String> fileContent) {
@@ -63,18 +65,24 @@ public class ElasticImportUtils {
 
         for(String line : fileContent ){
             if(i > 0) { // start with line 1 ;)
-                bulkProcessor.add(createIndexRequest(convertLineToJson(line).toJSONString(), Config.INDEX_NAME, Config.INDEX_TYPE));
+                try {
+                    bulkProcessor.add(createIndexRequest(convertLineToJson(line).toJSONString(), Config.INDEX_NAME, Config.INDEX_TYPE));
+                }
+                catch (NumberFormatException nfe) {
+                    failedLines++;
+                }
             }
-            if(i % 1 == 0) {
+            if(i % 500 == 0) {
                 System.out.print("processed " + Config.ANSI_RED_FG +  i + Config.ANSI_RESET + " lines...\r");
             }
             i++;
+            totalLines++;
         }
         bulkProcessor.flush();
     }
 
 
-    private JSONObject convertLineToJson(String line) {
+    private JSONObject convertLineToJson(String line) throws NumberFormatException {
         String[] pieces = line.split(";",-1); // split preserving empty fields
         Map<String, Object> mapping = new HashMap<String, Object>();
         int sign = +1;

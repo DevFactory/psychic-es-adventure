@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
@@ -61,6 +62,7 @@ public class FileUtils {
                 }
             }
         }
+        fileList.sort(Comparator.<String>naturalOrder());
         return fileList;
     }
 }
