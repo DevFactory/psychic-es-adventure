@@ -26,8 +26,10 @@ public class Initializer {
 
 
         if(initialSetup == true) {
-            // DBImportUtils dbImportUtils = new DBImportUtils();
-            // dbImportUtils.mysqlImport();
+            DBImportUtils dbImportUtils = new DBImportUtils();
+            dbImportUtils.mysqlImport();
+
+            /*
             ElasticImpl elastic = new ElasticImpl();
 
             XContentBuilder mapping = ElasticConfig.createMapping (ElasticConfig.getMappingFieldsDefinition());
@@ -36,7 +38,7 @@ public class Initializer {
 
             ElasticImportUtils elasticImportUtils = new ElasticImportUtils();
             elasticImportUtils.elasticImport();
-
+*/
 
         }
 

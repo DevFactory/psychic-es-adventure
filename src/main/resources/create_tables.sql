@@ -34,3 +34,27 @@ CREATE TABLE weatherstations_DWD (id INT NOT NULL AUTO_INCREMENT,
 
 -- SELECT * FROM weatherstations_DWD;
 -- DESCRIBE weatherstations_DWD;
+
+
+CREATE table climatedata (
+  id INT NOT NULL AUTO_INCREMENT,
+  year INT,
+  month INT,
+  station_id VARCHAR(16),
+  mean_monthly_station_level_pressure INT,
+  mean_monthly_air_temp INT,
+ total_monthly_precipitation INT,
+ number_of_days_with_precipitation INT,
+ total_monthly_sunshine INT,
+ days_with_max_temp_gt_25 INT,
+ days_with_max_temp_gt_30 INT,
+ days_with_max_temp_gt_35 INT,
+ days_with_max_temp_gt_40 INT,
+ days_with_min_temp_lt_0 INT,
+ days_with_max_temp_lt_0 INT,
+ max_temp_per_month INT,
+ min_temp_per_month INT,
+ max_gust_wind_speed_per_month INT,
+ number_of_days_with_thunderstorms INT,
+ number_of_days_with_hail INT,
+  PRIMARY KEY (id));
